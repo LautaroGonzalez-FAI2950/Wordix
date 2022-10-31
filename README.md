@@ -1,4 +1,4 @@
-# wordix  
+# Wordix  
 Trabajo Práctico Obligatorio Final de Introducción a la Programación  
 Juego a recrear en PHP y GIT : Wordix  
 
