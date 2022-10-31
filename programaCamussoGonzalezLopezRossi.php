@@ -9,7 +9,7 @@ include_once("wordix.php");
 /* ... COMPLETAR ... */
 /*
 
-Rossi Julia - FAI-2378 - Mail: julia.rossi@est.fi.uncoma.edu.ar - Github: JuliaRossiFAI-2378 
+Rossi Julia - FAI-2378 - TUDW - Mail: julia.rossi@est.fi.uncoma.edu.ar - Github: JuliaRossiFAI-2378 
 */
 
 /**************************************/
