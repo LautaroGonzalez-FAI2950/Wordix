@@ -7,6 +7,9 @@ include_once("wordix.php");
 
 /* Apellido, Nombre. Legajo. Carrera. mail. Usuario Github */
 /* Gonzalez Lautaro FAI-2950 TUDW lautarofglez@gmail.com LautaroGonzalez-FAI2950*/
+/* Git add .
+ Git commit -m "nombreCambio"
+ Git pull*/
 /* ... COMPLETAR ... */
 
 
