@@ -6,7 +6,7 @@ include_once("wordix.php");
 /**************************************/
 
 /* Apellido, Nombre. Legajo. Carrera. mail. Usuario Github */
-/* Gonzalez Lautaro FAI-2950 TUDW lautarofglez@gmail.com LautaroGonzalez-FAI2950 */
+/* Gonzalez Lautaro - FAI-2950 - TUDW - lautarofglez@gmail.com - LautaroGonzalez-FAI2950 */
 /* ... COMPLETAR ... */
 /*
 Rossi Julia - FAI-2378 - TUDW - Mail: julia.rossi@est.fi.uncoma.edu.ar - Github: JuliaRossiFAI-2378 
