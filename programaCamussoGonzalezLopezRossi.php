@@ -7,8 +7,9 @@ include_once("wordix.php");
 
 /* Apellido, Nombre. Legajo. Carrera. mail. Usuario Github */
 /* ... COMPLETAR ... */
-/*Rossi Julia - FAI-2378 - Mail: julia.rossi@est.fi.uncoma.edu.ar - Github: JuliaRossiFAI-2378 
+/*
 
+Rossi Julia - FAI-2378 - Mail: julia.rossi@est.fi.uncoma.edu.ar - Github: JuliaRossiFAI-2378 
 */
 
 /**************************************/
