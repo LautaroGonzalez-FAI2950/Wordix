@@ -6,18 +6,10 @@ include_once("wordix.php");
 /**************************************/
 
 /* Apellido, Nombre. Legajo. Carrera. mail. Usuario Github */
-/* Gonzalez Lautaro FAI-2950  Carrera: TUDW lautarofglez@gmail.com LautaroGonzalez-FAI2950 */
-/* ... COMPLETAR ... */
-<<<<<<< HEAD
-/*Camusso Valentin - FAI-3208 - TUDW - valentin.camusso@est.fi.uncoma.edu.ar - github.com/ValentinCamussoFAI-3208
+/* Gonzalez Lautaro FAI-2950  Carrera: TUDW lautarofglez@gmail.com LautaroGonzalez-FAI2950
+Camusso Valentin - FAI-3208 - TUDW - valentin.camusso@est.fi.uncoma.edu.ar - github.com/ValentinCamussoFAI-3208
 Rossi Julia - FAI-2378 - TUDW - Mail: julia.rossi@est.fi.uncoma.edu.ar - Github: JuliaRossiFAI-2378 
-*/
-
-=======
-/*
-/* Rossi Julia - FAI-2378 - Carrera: TUDW - Mail: julia.rossi@est.fi.uncoma.edu.ar - Github: JuliaRossiFAI-2378 */
-/* Emiliano Lopez - FAI-3357 - Carrera: TUDW - Mail: emiliano.lopez@est.fi.uncoma.edu.ar - Github: EmiMlz */
->>>>>>> main
+Emiliano Lopez - FAI-3357 - Carrera: TUDW - Mail: emiliano.lopez@est.fi.uncoma.edu.ar - Github: EmiMlz */
 /**************************************/
 /***** DEFINICION DE FUNCIONES ********/
 /**************************************/
