@@ -18,6 +18,7 @@ Rossi Julia - FAI-2378 - Carrera: TUDW - Mail: julia.rossi@est.fi.uncoma.edu.ar 
 /**
  * Obtiene una colección de palabras
  * @return array
+ * (Completado punto 1 explicación 3)
  */
 function cargarColeccionPalabras()
 {
@@ -34,8 +35,9 @@ function cargarColeccionPalabras()
 /**
  * Obtiene una coleccion de partidas
  * @return array
+ * (Completado punto 2 explicación 3)
  */
-function cargarColeccionPartidas()
+function cargarPartidas()
 {
     $coleccionPartidas = [];
     $coleccionPartidas [0]= ["palabraWordix" => "QUESO","jugador" => "majo","intentos" => 0,"puntaje" => 0];
@@ -62,6 +64,7 @@ function cargarColeccionPartidas()
  * @param array $coleccionPalabras
  * @param array $nuevaPalabra
  * @return array
+ * (Completado punto 7 explicación 3)
  */
 function agregarPalabra ($coleccionPalabras, $nuevaPalabra) {
     // A coleccionPalabras se le añade la nuevaPalabra en el indice de su longitud(ya que la longitud siempre es mas grande que el índice)
@@ -128,6 +131,7 @@ $partida = jugarWordix("MELON", strtolower("MaJo"));
  * Esta funcion muestra el menu de wordix y compruba si la opcion seleccionada por el usuario
  * esta dentro del rango de opciones
  * @return Int
+ * (Completado punto 3 explicación 3)
  */
 function seleccionarOpcion(){
     $numeroOpcion = 0;

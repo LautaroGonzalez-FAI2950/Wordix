@@ -31,6 +31,7 @@ const ESTADO_LETRA_PERTENECE = "pertenece";
  * @param Int $min
  * @param Int $max
  * @return Int
+ * (Completado punto 5 explicación 3)
  */
 // COMPLETADO
 function solicitarNumeroEntre($min, $max)
@@ -154,6 +155,7 @@ function esPalabra($cadena)
  * Consulta si la palabra tiene 5 caracteres y si está compuesta de únicamente letras si no, hay que igresar
  * Una nueva palabra.
  * @return STRING
+ * (Completado punto 4 explicacion 3)
  */
 //COMPLETADO
 function leerPalabra5Letras()
