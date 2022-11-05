@@ -148,7 +148,10 @@ function esPalabra($cadena)
 }
 
 /**
- *  ****COMPLETAR*****
+ * Esta función permite ingresar una palabra de 5 letras y si está en minúscula lo transforma en mayúsculas
+ * Consulta si la palabra tiene 5 caracteres y si está compuesta de únicamente letras si no, hay que igresar
+ * Una nueva palabra.
+ * @return STRING
  */
 function leerPalabra5Letras()
 {
