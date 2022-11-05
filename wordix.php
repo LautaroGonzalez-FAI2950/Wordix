@@ -26,12 +26,13 @@ const ESTADO_LETRA_PERTENECE = "pertenece";
 /***** DEFINICION DE FUNCIONES ********/
 /**************************************/
 
-/** Esta funcion solicita un numero y comprueba que este entre los 2 valores de entrada
+/** 
+ * Esta funcion solicita un numero y comprueba que este entre los 2 valores de entrada
  * @param Int $min
  * @param Int $max
  * @return Int
  */
-// Completado
+// COMPLETADO
 function solicitarNumeroEntre($min, $max)
 {
     //int $numero
@@ -116,7 +117,9 @@ function escribirSegunEstado($texto, $estado)
 
 /**
  * Escribe por pantalla un mensaje de bienvenida al usuario que está jugando
+ * @param STRING $usuario
  */
+//COMPLETADO
 function escribirMensajeBienvenida($usuario)
 {
     echo "***************************************************\n";
@@ -128,9 +131,11 @@ function escribirMensajeBienvenida($usuario)
 
 
 /**
- * Esta función verifica que todos los carácteres de la palabra sean alfabéticos
- * *COMPLETADO*
+ * Pregunta si la cadena ingresada está comformada completamente de STRING
+ * @param STRING $cadena
+ * @return STRING
  */
+//COMPLETADO
 function esPalabra($cadena)
 {
     //int $cantCaracteres, $i, boolean $esLetra
@@ -145,8 +150,12 @@ function esPalabra($cadena)
 }
 
 /**
- *  ****COMPLETAR*****
+ * Esta función permite ingresar una palabra de 5 letras y si está en minúscula lo transforma en mayúsculas
+ * Consulta si la palabra tiene 5 caracteres y si está compuesta de únicamente letras si no, hay que igresar
+ * Una nueva palabra.
+ * @return STRING
  */
+//COMPLETADO
 function leerPalabra5Letras()
 {
     //string $palabra
