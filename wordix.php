@@ -128,7 +128,8 @@ function escribirMensajeBienvenida($usuario)
 
 
 /**
- * ****COMPLETAR*****
+ * Esta función verifica que todos los carácteres de la palabra sean alfabéticos
+ * *COMPLETADO*
  */
 function esPalabra($cadena)
 {
