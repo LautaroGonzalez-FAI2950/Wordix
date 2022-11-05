@@ -117,8 +117,8 @@ function escribirSegunEstado($texto, $estado)
 /**
  * Escribe por pantalla un mensaje de bienvenida al usuario que está jugando
  * @param STRING $usuario
- * //COMPLETADO
  */
+//COMPLETADO
 function escribirMensajeBienvenida($usuario)
 {
     echo "***************************************************\n";
@@ -134,6 +134,7 @@ function escribirMensajeBienvenida($usuario)
  * @param STRING $cadena
  * @return STRING
  */
+//COMPLETADO
 function esPalabra($cadena)
 {
     //int $cantCaracteres, $i, boolean $esLetra
@@ -153,6 +154,7 @@ function esPalabra($cadena)
  * Una nueva palabra.
  * @return STRING
  */
+//COMPLETADO
 function leerPalabra5Letras()
 {
     //string $palabra
