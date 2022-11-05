@@ -75,11 +75,11 @@ function mostrarPartida(){
     echo "Ingrese un número de partida para mostrar: ";
     $aux = trim(fgets(STDIN));
     foreach (cargarColeccionPalabras() as &$valor){
-        while ($aux != $valor){
+        while ($aux-1 != $valor){
             echo "Ingrese un número válido: ";
             $aux = trim(fgets(STDIN));
         }
-        echo cargarColeccionPalabras($aux);
+        echo cargarColeccionPalabras($aux-1);
     }
 }
 
