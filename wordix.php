@@ -26,8 +26,10 @@ const ESTADO_LETRA_PERTENECE = "pertenece";
 /***** DEFINICION DE FUNCIONES ********/
 /**************************************/
 
-/**
- *  ****COMPLETAR*****
+/** Esta funcion solicita un numero y comprueba que este entre los 2 valores de entrada
+ * @param Int $min
+ * @param Int $max
+ * @return Int
  */
 function solicitarNumeroEntre($min, $max)
 {
