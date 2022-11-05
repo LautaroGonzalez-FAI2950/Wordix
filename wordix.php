@@ -32,7 +32,7 @@ const ESTADO_LETRA_PERTENECE = "pertenece";
  * @param Int $max
  * @return Int
  */
-// Completado
+// COMPLETADO
 function solicitarNumeroEntre($min, $max)
 {
     //int $numero
