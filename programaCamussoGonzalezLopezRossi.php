@@ -84,7 +84,33 @@ $partida = jugarWordix("MELON", strtolower("MaJo"));
 //print_r($partida);
 //imprimirResultado($partida);
 
-
+/**
+ * Esta funcion muestra el menu de wordix y compruba si la opcion seleccionada por el usuario
+ * esta dentro del rango de opciones
+ * @return Int
+ */
+function seleccionarOpcion(){
+    $numeroOpcion = 0;
+    //Muestra el menu
+    echo "Menu de opciones:\n";
+    echo "\t1) Jugar al Wordix con una palabra elegida\n";
+    echo "\t2) Jugar al Wordix con una palabra aleatoria\n";
+    echo "\t3) Mostrar una partida\n";
+    echo "\t4) Mostrar la primer partida ganadora\n";
+    echo "\t5) Mostrar resumen de Jugador\n";
+    echo "\t6) Mostrar listado de partidas ordenadas por jugador y por palabra\n";
+    echo "\t7) Agregar una palabra de 5 letras a Wordix\n";
+    echo "\t8) Salir\n";
+    echo "Ingrese la opcion que desea elegir: ";
+    $numeroOpcion = trim(fgets(STDIN));//Obtiene la opcion del usuario
+    if($numeroOpcion < 0 || $numeroOpcion > 9){
+        do{
+            echo "La opcion ingresada no es valida, por favor ingrese una opcion valida: ";
+            $numeroOpcion = trim(fgets(STDIN));
+        }while($numeroOpcion < 0 || $numeroOpcion > 9);
+    }      
+    return $numeroOpcion;
+}
 
 /*
 do {
