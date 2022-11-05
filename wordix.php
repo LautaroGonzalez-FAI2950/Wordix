@@ -46,7 +46,7 @@ function solicitarNumeroEntre($min, $max)
 
 /**
  * Escrbir un texto en color ROJO
- * @param string $texto)
+ * @param string $texto
  */
 function escribirRojo($texto)
 {
@@ -55,7 +55,7 @@ function escribirRojo($texto)
 
 /**
  * Escrbir un texto en color VERDE
- * @param string $texto)
+ * @param string $texto
  */
 function escribirVerde($texto)
 {
@@ -64,7 +64,7 @@ function escribirVerde($texto)
 
 /**
  * Escrbir un texto en color AMARILLO
- * @param string $texto)
+ * @param string $texto
  */
 function escribirAmarillo($texto)
 {
@@ -73,7 +73,7 @@ function escribirAmarillo($texto)
 
 /**
  * Escrbir un texto en color GRIS
- * @param string $texto)
+ * @param string $texto
  */
 function escribirGris($texto)
 {
@@ -82,7 +82,7 @@ function escribirGris($texto)
 
 /**
  * Escrbir un texto pantalla.
- * @param string $texto)
+ * @param string $texto
  */
 function escribirNormal($texto)
 {
