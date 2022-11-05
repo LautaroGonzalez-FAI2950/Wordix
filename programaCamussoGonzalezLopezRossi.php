@@ -57,7 +57,16 @@ function cargarColeccionPartidas()
     return ($coleccionPartidas);
 }
 
-
+/** Esta función recibe la colección de palabras y una nueva palabra para retornar la colección de palabras con la nueva palabra.
+ * @param array $coleccionPalabras
+ * @param array $nuevaPalabra
+ * @return array
+ */
+function agregarPalabra ($coleccionPalabras, $nuevaPalabra) {
+    // A coleccionPalabras se le añade la nuevaPalabra en el indice de su longitud(ya que la longitud siempre es mas grande que el índice)
+    $coleccionPalabras[count($coleccionPalabras)] = $nuevaPalabra;
+    return $coleccionPalabras;
+}
 
 /**************************************/
 /*********** PROGRAMA PRINCIPAL *******/
