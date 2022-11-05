@@ -57,7 +57,8 @@ function cargarColeccionPartidas()
     return ($coleccionPartidas);
 }
 
-/** Esta función recibe la colección de palabras y una nueva palabra para retornar la colección de palabras con la nueva palabra.
+/** 
+ * Esta función recibe la colección de palabras y una nueva palabra para retornar la colección de palabras con la nueva palabra.
  * @param array $coleccionPalabras
  * @param array $nuevaPalabra
  * @return array
@@ -67,14 +68,38 @@ function agregarPalabra ($coleccionPalabras, $nuevaPalabra) {
     $coleccionPalabras[count($coleccionPalabras)] = $nuevaPalabra;
     return $coleccionPalabras;
 }
+/**
+ * Esta funcion devuelve el indice de la primera partida ganada por un jugador en especifico
+ * @param array $colleccionPartidas
+ * @param string $jugador
+ * @return int
+ */
+function indicePrimerPartidaGanada($coleccionPartidas, $jugador){
+foreach (cargarColeccionPartidas() as $indice => $elJugador ){
+    $primerPartida= 0;
+    while ($primerPartida!=1 && $primerPartida!=-1){
+        if ($elJugador==$jugador){
+            $primerPartida=1;
+        }
+        elseif ($indice==count($coleccionPartidas)){
+            $primerPartida=-1;
+        }
 
+
+    }
+
+}
+
+
+
+}
 /**
  * Ingresa un valor y muestra la partida con ese valor
  */
 function mostrarPartida(){
     echo "Ingrese un número de partida para mostrar: ";
     $aux = trim(fgets(STDIN));
-    foreach (cargarColeccionPalabras() as &$valor){
+    foreach (cargarColeccionPalabras() as $valor){
         while ($aux-1 != $valor){
             echo "Ingrese un número válido: ";
             $aux = trim(fgets(STDIN));
