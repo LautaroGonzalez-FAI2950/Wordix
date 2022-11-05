@@ -96,20 +96,17 @@ function indicePrimerPartidaGanada($coleccionPartidas, $jugador){
 function mostrarPartida(){
     /* INT $aux, BOOLEAN $consulta */
     echo "Ingrese un número de partida para mostrar: ";
-    $aux = trim(fgets(STDIN));
     $consulta = true;
+    $contador=count(cargarPartidas());
     do{
-        foreach (cargarPartidas() as $valor){
-            if ($aux-1 == $valor){
-             $consulta = false;
-            }
+        $aux = trim(fgets(STDIN));
+        if ($aux-1 <= $contador && $aux-1>=0){
+            $consulta = false;
+            print_r(cargarPartidas()[$aux-1]);
+        } else {
+            echo "Número inválido, ingrese otro número";
         }
-    } while ($consulta);
-    if (!$consulta){
-        echo cargarPartidas($aux-1);
-    } else {
-        echo "Error: No ingresó un número válido";
-    }
+    }while($consulta);
 }
 
 /**************************************/
