@@ -130,7 +130,9 @@ function escribirMensajeBienvenida($usuario)
 
 
 /**
- * ****COMPLETAR*****
+ * Pregunta si la cadena ingresada está comformada completamente de STRING
+ * @param STRING $cadena
+ * @return STRING
  */
 function esPalabra($cadena)
 {
