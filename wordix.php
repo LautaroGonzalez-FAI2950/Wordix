@@ -115,7 +115,7 @@ function escribirSegunEstado($texto, $estado)
 }
 
 /**
- * ****COMPLETAR*****
+ * Escribe por pantalla un mensaje de bienvenida al usuario que está jugando
  */
 function escribirMensajeBienvenida($usuario)
 {
