@@ -98,6 +98,7 @@ foreach (cargarPartidas() as $indice => $elJugador ){
  */
 //COMPLETADO (PUNTO6 EXPLICACION3)
 function mostrarPartida(){
+    /* INT $aux, BOOLEAN $consulta */
     echo "Ingrese un número de partida para mostrar: ";
     $aux = trim(fgets(STDIN));
     $consulta = true;
