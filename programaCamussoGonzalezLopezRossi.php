@@ -48,8 +48,9 @@ function cargarPartidas()
     $coleccionPartidas [5]= ["palabraWordix" => "HUEVO","jugador" => "julia","intentos" => 4,"puntaje" => 11];
     $coleccionPartidas [6]= ["palabraWordix" => "LOSAS","jugador" => "felixmodelorjr","intentos" => 2,"puntaje" => 15];
     $coleccionPartidas [7]= ["palabraWordix" => "RATON","jugador" => "mickey","intentos" => 5,"puntaje" => 13];
-    $coleccionPartidas [8]= ["palabraWordix" => "GATOS","jugador" => "majo","intentos" => 2,"puntaje" => 15];
-    $coleccionPartidas [9]= ["palabraWordix" => "NAVES","jugador" => "buzzlightyear","intentos" => 1,"puntaje" => 17];
+    $coleccionPartidas [8]= ["palabraWordix" => "RATON","jugador" => "majo","intentos" => 5,"puntaje" => 13];
+    $coleccionPartidas [9]= ["palabraWordix" => "GATOS","jugador" => "majo","intentos" => 2,"puntaje" => 15];
+    $coleccionPartidas [10]= ["palabraWordix" => "NAVES","jugador" => "buzzlightyear","intentos" => 1,"puntaje" => 17];
 
 
 
@@ -73,19 +74,21 @@ function agregarPalabra ($coleccionPalabras, $nuevaPalabra) {
 }
 /**
  * Esta funcion devuelve el indice de la primera partida ganada por un jugador en especifico
- * @param array $colleccionPartidas
+ * @param array $coleccionPartidas
  * @param string $jugador
  * @return int
  */
 function indicePrimerPartidaGanada($coleccionPartidas, $jugador){
-    $n=count($coleccionPartidas);
-    for ($i=0;$i<$n; $i++){
-        if($jugador==$coleccionPartidas[$i]["jugador"]){
-            $indice=$i+1;
+    $coleccionPartidas=cargarPartidas();
+    $n = count($coleccionPartidas); //10
+    $i=0;
+    $indice=-1;
+    $cortar= true;
+    while ($i<$n && $i!=$indice){
+        if ($jugador==$coleccionPartidas[$i]["jugador"] && $coleccionPartidas[$i]["puntaje"]>0 ){
+        $indice=$i;
         }
-        else{
-            $indice= -1;
-        }
+        else $i++;
     }
     return $indice;
 }
