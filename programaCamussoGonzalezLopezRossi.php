@@ -68,6 +68,21 @@ function agregarPalabra ($coleccionPalabras, $nuevaPalabra) {
     return $coleccionPalabras;
 }
 
+/**
+ * Ingresa un valor y muestra la partida con ese valor
+ */
+function mostrarPartida(){
+    echo "Ingrese un número de partida para mostrar: ";
+    $aux = trim(fgets(STDIN));
+    foreach (cargarColeccionPalabras() as &$valor){
+        while ($aux != $valor){
+            echo "Ingrese un número válido: ";
+            $aux = trim(fgets(STDIN));
+        }
+        echo cargarColeccionPalabras($aux);
+    }
+}
+
 /**************************************/
 /*********** PROGRAMA PRINCIPAL *******/
 /**************************************/
