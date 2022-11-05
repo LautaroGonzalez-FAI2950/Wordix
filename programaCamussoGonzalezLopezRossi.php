@@ -78,20 +78,16 @@ function agregarPalabra ($coleccionPalabras, $nuevaPalabra) {
  * @return int
  */
 function indicePrimerPartidaGanada($coleccionPartidas, $jugador){
-foreach (cargarPartidas() as $indice => $elJugador ){
-    $primerPartida= 0;
-    while ($primerPartida!=1 && $primerPartida!=-1){
-        if ($elJugador==$jugador){
-            $primerPartida=1;
+    $n=count($coleccionPartidas);
+    for ($i=0;$i<$n; $i++){
+        if($jugador==$coleccionPartidas[$i]["jugador"]){
+            $indice=$i+1;
         }
-        elseif ($indice==count($coleccionPartidas)){
-            $primerPartida=-1;
+        else{
+            $indice= -1;
         }
-
-
     }
-
-}
+    return $indice;
 }
 /**
  * Ingresa un valor y muestra la partida con ese valor
