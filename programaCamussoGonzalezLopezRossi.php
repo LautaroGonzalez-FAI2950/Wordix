@@ -78,7 +78,7 @@ function agregarPalabra ($coleccionPalabras, $nuevaPalabra) {
  * @return int
  */
 function indicePrimerPartidaGanada($coleccionPartidas, $jugador){
-foreach (cargarColeccionPartidas() as $indice => $elJugador ){
+foreach (cargarPartidas() as $indice => $elJugador ){
     $primerPartida= 0;
     while ($primerPartida!=1 && $primerPartida!=-1){
         if ($elJugador==$jugador){
@@ -92,22 +92,26 @@ foreach (cargarColeccionPartidas() as $indice => $elJugador ){
     }
 
 }
-
-
-
 }
 /**
  * Ingresa un valor y muestra la partida con ese valor
  */
+//COMPLETADO (PUNTO6 EXPLICACION3)
 function mostrarPartida(){
     echo "Ingrese un número de partida para mostrar: ";
     $aux = trim(fgets(STDIN));
-    foreach (cargarColeccionPalabras() as $valor){
-        while ($aux-1 != $valor){
-            echo "Ingrese un número válido: ";
-            $aux = trim(fgets(STDIN));
+    $consulta = true;
+    do{
+        foreach (cargarPartidas() as $valor){
+            if ($aux-1 == $valor){
+             $consulta = false;
+            }
         }
-        echo cargarColeccionPalabras($aux-1);
+    } while ($consulta);
+    if (!$consulta){
+        echo cargarPartidas($aux-1);
+    } else {
+        echo "Error: No ingresó un número válido";
     }
 }
 
