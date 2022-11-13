@@ -51,12 +51,7 @@ function cargarPartidas()
     $coleccionPartidas [8]= ["palabraWordix" => "RATON","jugador" => "majo","intentos" => 5,"puntaje" => 13];
     $coleccionPartidas [9]= ["palabraWordix" => "GATOS","jugador" => "majo","intentos" => 2,"puntaje" => 15];
     $coleccionPartidas [10]= ["palabraWordix" => "NAVES","jugador" => "buzzlightyear","intentos" => 1,"puntaje" => 17];
-
-
-
     //COMPLETADO
-    ;
-
     return ($coleccionPartidas);
 }
 
@@ -167,7 +162,8 @@ $partida = jugarWordix("MELON", strtolower("MaJo"));
  * (Completado punto 3 explicación 3)
  */
 function seleccionarOpcion(){
-    $numeroOpcion = 0; //Int, almacena el valor de la opcion elegida
+    //Int, almacena el valor de la opcion elegida
+    $numeroOpcion = 0; 
     //Muestra el menu
     echo "Menu de opciones:\n";
     echo "\t1) Jugar al Wordix con una palabra elegida\n";
@@ -180,7 +176,7 @@ function seleccionarOpcion(){
     echo "\t8) Salir\n";
     echo "Ingrese la opcion que desea elegir: ";
     $numeroOpcion = trim(fgets(STDIN));//Obtiene la opcion del usuario
-    if($numeroOpcion < 0 || $numeroOpcion > 9){
+    if($numeroOpcion < 1 || $numeroOpcion > 9){
         //Si la opcion no es valida, pide al usuario que ingrese otra opcion
         do{
             echo "La opcion ingresada no es valida, por favor ingrese una opcion valida: ";
@@ -189,6 +185,8 @@ function seleccionarOpcion(){
     }      
     return $numeroOpcion;
 }
+
+
 
 /*
 do {
