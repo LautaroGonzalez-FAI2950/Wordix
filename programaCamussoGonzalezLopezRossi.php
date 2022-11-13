@@ -51,12 +51,7 @@ function cargarPartidas()
     $coleccionPartidas [8]= ["palabraWordix" => "RATON","jugador" => "majo","intentos" => 5,"puntaje" => 13];
     $coleccionPartidas [9]= ["palabraWordix" => "GATOS","jugador" => "majo","intentos" => 2,"puntaje" => 15];
     $coleccionPartidas [10]= ["palabraWordix" => "NAVES","jugador" => "buzzlightyear","intentos" => 1,"puntaje" => 17];
-
-
-
     //COMPLETADO
-    ;
-
     return ($coleccionPartidas);
 }
 
@@ -172,6 +167,8 @@ function seleccionarOpcion(){
     }      
     return $numeroOpcion;
 }
+
+
 
 /*
 do {
