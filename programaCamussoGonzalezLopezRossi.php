@@ -92,6 +92,20 @@ function indicePrimerPartidaGanada($coleccionPartidas, $jugador){
     }
     return $indice;
 }
+/** Esta función solicita al usuario el nombre de un jugador y retorna el nombre en minúsculas
+ * @return string
+ * (COMPLETADO PUNTO 10 EXPLICACIÓN 3)
+ */
+function solicitarJugador() {
+    // STRING $nombre, BOOLEAN $comienzaLetra
+    do {
+        echo "¿Nombre del jugador? Debe empezar con una letra: ";
+        $nombre = trim(fgets(STDIN));
+        $comienzaLetra = ctype_alpha($nombre[0]);
+    } while (!$comienzaLetra);
+    $nombre = strtolower($nombre);
+    return $nombre;
+}
 /**
  * Ingresa un valor y muestra la partida con ese valor
  */
