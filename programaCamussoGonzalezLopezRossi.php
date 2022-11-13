@@ -163,7 +163,7 @@ function seleccionarOpcion(){
     echo "\t8) Salir\n";
     echo "Ingrese la opcion que desea elegir: ";
     $numeroOpcion = trim(fgets(STDIN));//Obtiene la opcion del usuario
-    if($numeroOpcion < 0 || $numeroOpcion > 9){
+    if($numeroOpcion < 1 || $numeroOpcion > 9){
         //Si la opcion no es valida, pide al usuario que ingrese otra opcion
         do{
             echo "La opcion ingresada no es valida, por favor ingrese una opcion valida: ";
