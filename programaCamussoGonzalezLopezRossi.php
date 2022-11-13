@@ -121,10 +121,29 @@ function mostrarPartida(){
     }while($consulta);
 }
 
+/** Esta función compara una coleccion de partida y las ordena alfabéticamente según jugador y palabra
+ * @param Array $a
+ * @param Array $b
+ * @return Int
+ */
+function comparacion($a,$b){
+    if ($a["palabraWordix"]==$b["palabraWordix"]){
+        return 0;
+    }
+    return (($a["jugador"]<$b["jugador"]) ? -1 : 1);
+}
+/** Muestra una colección de partidas
+ */
+function mostrarColeccionPartida(){
+    $partidas = cargarPartidas();
+    uasort($partidas, 'comparacion');
+    print_r($partidas);
+}
+
 /**************************************/
 /*********** PROGRAMA PRINCIPAL *******/
 /**************************************/
-
+mostrarColeccionPartida();
 //Declaración de variables:
 
 
