@@ -148,7 +148,6 @@ function mostrarColeccionPartida(){
 /**************************************/
 /*********** PROGRAMA PRINCIPAL *******/
 /**************************************/
-mostrarColeccionPartida();
 //Declaración de variables:
 
 
