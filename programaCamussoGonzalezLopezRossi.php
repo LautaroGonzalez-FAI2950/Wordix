@@ -149,7 +149,7 @@ $partida = jugarWordix("MELON", strtolower("MaJo"));
  * (Completado punto 3 explicación 3)
  */
 function seleccionarOpcion(){
-    $numeroOpcion = 0;
+    $numeroOpcion = 0; //Int, almacena el valor de la opcion elegida
     //Muestra el menu
     echo "Menu de opciones:\n";
     echo "\t1) Jugar al Wordix con una palabra elegida\n";
