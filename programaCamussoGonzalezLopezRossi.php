@@ -180,7 +180,7 @@ function seleccionarOpcion(){
     if($numeroOpcion < 1 || $numeroOpcion > 9){
         //Si la opcion no es valida, pide al usuario que ingrese otra opcion
         do{
-            echo "La opcion ingresada no es valida, por favor ingrese una opcion valida: ";
+            echo "La opción ingresada no es válida, por favor ingrese una opción válida: ";
             $numeroOpcion = trim(fgets(STDIN));
         }while($numeroOpcion < 0 || $numeroOpcion > 9);
     }      
