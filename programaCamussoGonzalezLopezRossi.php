@@ -22,6 +22,7 @@ Rossi Julia - FAI-2378 - Carrera: TUDW - Mail: julia.rossi@est.fi.uncoma.edu.ar 
  */
 function cargarColeccionPalabras()
 {
+    // array $coleccionPalabras
     $coleccionPalabras = [
         "MUJER", "QUESO", "FUEGO", "CASAS", "RASGO",
         "GATOS", "GOTAS", "HUEVO", "TINTO", "NAVES",
@@ -39,6 +40,7 @@ function cargarColeccionPalabras()
  */
 function cargarPartidas()
 {
+    // array $coleccionPartidas
     $coleccionPartidas = [];
     $coleccionPartidas [0]= ["palabraWordix" => "QUESO","jugador" => "majo","intentos" => 0,"puntaje" => 0];
     $coleccionPartidas [1]= ["palabraWordix" => "CASAS","jugador" => "rudolf","intentos" => 3,"puntaje" => 14];
@@ -72,10 +74,12 @@ function agregarPalabra ($coleccionPalabras, $nuevaPalabra) {
  * @param array $coleccionPartidas
  * @param string $jugador
  * @return int
+ * COMPLETADO punto 8 Ejercicio 3
  */
 function indicePrimerPartidaGanada($coleccionPartidas, $jugador){
+    //int $n, i, indice Boolean $cortar
     $coleccionPartidas=cargarPartidas();
-    $n = count($coleccionPartidas); //10
+    $n = count($coleccionPartidas); 
     $i=0;
     $indice=-1;
     $cortar= true;
@@ -104,7 +108,7 @@ function solicitarJugador() {
 /**
  * Ingresa un valor y muestra la partida con ese valor
  */
-//COMPLETADO (PUNTO6 EXPLICACION3)
+//COMPLETADO (PUNTO 6 EXPLICACION 3)
 function mostrarPartida(){
     /* INT $aux, BOOLEAN $consulta */
     echo "Ingrese un número de partida para mostrar: ";
@@ -119,6 +123,48 @@ function mostrarPartida(){
             echo "Número inválido, ingrese otro número";
         }
     }while($consulta);
+}
+/** Esta funcion retorna dada una coleccion de partidas la informacion de UN jugador
+ * @param array $coleccionPartidas
+ * @param string $jugador
+ * @return array
+ */
+function extraerResumenJugador($coleccionPartidas,$jugador) {
+// array $resumenUnJugador
+$coleccionPartidas=cargarPartidas();
+    $n = count($coleccionPartidas); 
+    $contPartidasGanadas= 0;
+    $contPartidasTotales= 0;
+    $puntajeTotalUnJugador=0;
+    $resumenUnJugador=["jugador"=> "","cantidadPartidas"=> 0, "puntajeTotal"=>0, "victorias"=>0, "intento1"=>0, "intento2"=>0, "intento3"=>0, "intento4"=>0,"intento5"=>0,"intento6"=>0];
+    $existe= false;
+
+    for ($i=0; $i<$n; $i++){
+        if ($jugador==$coleccionPartidas[$i]["jugador"]){
+            $resumenUnJugador["jugador"]= $coleccionPartidas[$i]["jugador"];
+            $puntajeTotalUnJugador += $coleccionPartidas[$i]["puntaje"];
+            $existe = true;
+            
+            switch ($coleccionPartidas[$i]["intentos"]) {
+                case 1: $resumenUnJugador["intento1"]+= 1;$contPartidasGanadas++;; break;
+                case 2: $resumenUnJugador["intento2"]+= 1;$contPartidasGanadas++;break;
+                case 3: $resumenUnJugador["intento3"]+= 1;$contPartidasGanadas++;break;
+                case 4: $resumenUnJugador["intento4"]+= 1;$contPartidasGanadas++;break;
+                case 5: $resumenUnJugador["intento5"]+= 1;$contPartidasGanadas++; break;
+                case 6: $resumenUnJugador["intento6"]+= 1;$contPartidasGanadas++; break;
+                }
+                $contPartidasTotales++;
+        }
+        elseif($i+1==$n && !$existe){
+        echo "El jugador ingresado no existe en la coleccion de partidas, ingrese uno nuevamente: ";
+        $jugador= trim(fgets(STDIN));
+        $i=-1;
+        }
+    }
+    $resumenUnJugador["cantidadPartidas"]= $contPartidasTotales;
+    $resumenUnJugador["victorias"]= $contPartidasGanadas;
+    $resumenUnJugador["puntajeTotal"]= $puntajeTotalUnJugador;
+    return $resumenUnJugador;
 }
 
 /** Esta función compara una coleccion de partida y las ordena alfabéticamente según jugador y palabra
@@ -174,12 +220,12 @@ function seleccionarOpcion(){
     echo "\t6) Mostrar listado de partidas ordenadas por jugador y por palabra\n";
     echo "\t7) Agregar una palabra de 5 letras a Wordix\n";
     echo "\t8) Salir\n";
-    echo "Ingrese la opcion que desea elegir: ";
+    echo "Ingrese la opción que desea elegir: ";
     $numeroOpcion = trim(fgets(STDIN));//Obtiene la opcion del usuario
     if($numeroOpcion < 1 || $numeroOpcion > 9){
         //Si la opcion no es valida, pide al usuario que ingrese otra opcion
         do{
-            echo "La opcion ingresada no es valida, por favor ingrese una opcion valida: ";
+            echo "La opción ingresada no es válida, por favor ingrese una opción válida: ";
             $numeroOpcion = trim(fgets(STDIN));
         }while($numeroOpcion < 0 || $numeroOpcion > 9);
     }      
