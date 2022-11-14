@@ -110,13 +110,15 @@ function solicitarJugador() {
  */
 //COMPLETADO (PUNTO 6 EXPLICACION 3)
 function mostrarPartida(){
-    /* INT $aux, BOOLEAN $consulta */
+    /* INT $aux, $minimoPartida, $maximoPartida, BOOLEAN $consulta */
+    $minimoPartida = 0;
     echo "Ingrese un número de partida para mostrar: ";
     $consulta = true;
-    $contador=count(cargarPartidas());
+    $maximoPartida=count(cargarPartidas());
+    $arrayAux = solicitarNumeroEntre($minimoPartida, $maximoPartida);
     do{
         $aux = trim(fgets(STDIN));
-        if ($aux-1 <= $contador && $aux-1>=0){
+        if (){
             $consulta = false;
             print_r(cargarPartidas()[$aux-1]);
         } else {
@@ -194,11 +196,6 @@ function mostrarColeccionPartida(){
  */
 function seleccionarOpcion(){
     /*INT $numeroOpcion, $minimoOpcion, $maximoOpcion */
-
-    $minimoOpcion = 1;
-    $maximoOpcion = 8;
-    //Almacena el valor de la opcion elegida
-    $numeroOpcion = 0; 
     //Muestra el menu
     echo "Menu de opciones:\n";
     echo "\t1) Jugar al Wordix con una palabra elegida\n";
@@ -210,8 +207,8 @@ function seleccionarOpcion(){
     echo "\t7) Agregar una palabra de 5 letras a Wordix\n";
     echo "\t8) Salir\n";
     echo "Ingrese la opción que desea elegir: ";
-    solicitarNumeroEntre($minimoOpcion,$maximoOpcion);       
-    return $numeroOpcion;
+    $numeroOpcion = solicitarNumeroEntre(1,8);
+    return ($numeroOpcion);       
 }
 $laColeccionPartidas=cargarPartidas(); // 12) a)
 $laColeccionPalabras=cargarColeccionPalabras(); // 12) b)
