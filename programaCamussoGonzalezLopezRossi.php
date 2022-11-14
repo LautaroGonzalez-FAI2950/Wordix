@@ -114,8 +114,8 @@ function solicitarJugador() {
 function mostrarPartida(){
     /* Array $arrayAux, INT $maximoPartida, $puntajePartida, $partidaJugada, STRING $jugadorPartida, $palabraPartida */
     $maximoPartida=count(cargarPartidas()); //Guarda el máximo de los índices del array
+    echo "Ingrese un número de partida para mostrar (Entre 1 y ". $maximoPartida. "): ";
     $partidaJugada = solicitarNumeroEntre(1, $maximoPartida)-1; //Guarda un valor como índice
-    echo "Ingrese un número de partida para mostrar: (Entre 1 y ". $maximoPartida. ")";
     $arrayAux = cargarPartidas()[$partidaJugada];
     $palabraPartida = $arrayAux["palabraWordix"];
     $jugadorPartida = $arrayAux["jugador"];
@@ -123,10 +123,10 @@ function mostrarPartida(){
 
     //Mostrar partida
     echo "***************************************************\n";
-    echo "Partida WORDIX".$partidaJugada.": palabra ". $palabraPartida;
-    echo "Jugador: ". $jugadorPartida;
-    echo "Puntaje: ". $puntajePartida. " puntos";
-    echo "Intento: ". (($arrayAux["intentos"]>0) ? "Adivinó la palabra en ". $arrayAux["intentos"]. " intentos" : "No adivinó la palabra");
+    echo "Partida WORDIX".$partidaJugada.": palabra ". $palabraPartida. "\n";
+    echo "Jugador: ". $jugadorPartida. "\n";
+    echo "Puntaje: ". $puntajePartida. " puntos \n";
+    echo "Intento: ". (($arrayAux["intentos"]>0) ? "Adivinó la palabra en ". $arrayAux["intentos"]. " intentos \n" : "No adivinó la palabra \n");
     echo "***************************************************\n";
 }
 
