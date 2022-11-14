@@ -114,8 +114,8 @@ function solicitarJugador() {
 function mostrarPartida(){
     /* Array $arrayAux, INT $maximoPartida, $puntajePartida, $partidaJugada, STRING $jugadorPartida, $palabraPartida */
     $maximoPartida=count(cargarPartidas()); //Guarda el máximo de los índices del array
+    echo "Ingrese un número de partida para mostrar (Entre 1 y ". $maximoPartida. "): ";
     $partidaJugada = solicitarNumeroEntre(1, $maximoPartida)-1; //Guarda un valor como índice
-    echo "Ingrese un número de partida para mostrar: (Entre 1 y ". $maximoPartida. ")";
     $arrayAux = cargarPartidas()[$partidaJugada];
     $palabraPartida = $arrayAux["palabraWordix"];
     $jugadorPartida = $arrayAux["jugador"];
@@ -123,21 +123,20 @@ function mostrarPartida(){
 
     //Mostrar partida
     echo "***************************************************\n";
-    echo "Partida WORDIX".$partidaJugada.": palabra ". $palabraPartida;
-    echo "Jugador: ". $jugadorPartida;
-    echo "Puntaje: ". $puntajePartida. " puntos";
-    echo "Intento: ". (($arrayAux["intentos"]>0) ? "Adivinó la palabra en ". $arrayAux["intentos"]. " intentos" : "No adivinó la palabra");
+    echo "Partida WORDIX ".$partidaJugada.": palabra ". $palabraPartida. "\n";
+    echo "Jugador: ". $jugadorPartida. "\n";
+    echo "Puntaje: ". $puntajePartida. " puntos \n";
+    echo "Intento: ". (($arrayAux["intentos"]>0) ? "Adivinó la palabra en ". $arrayAux["intentos"]. " intentos \n" : "No adivinó la palabra \n");
     echo "***************************************************\n";
 }
 
 /** Esta funcion retorna dada una coleccion de partidas la informacion de UN jugador
- * @param array $coleccionPartidas
  * @param string $jugador
  * @return array
  */
-function extraerResumenJugador($coleccionPartidas,$jugador) {
+function extraerResumenJugador($jugador) {
 // array $resumenUnJugador int $n,$i, $contPartidasGanadas, $contPartidasTotales, $puntajeTotalUnJugador, boolean $existe
-$coleccionPartidas=cargarPartidas();
+    $coleccionPartidas=cargarPartidas();
     $n = count($coleccionPartidas); 
     $contPartidasGanadas= 0;
     $contPartidasTotales= 0;
@@ -262,6 +261,7 @@ do {
             break;
         case 3: 
             mostrarPartida();
+            sleep(5);
 
             break;
         
@@ -274,14 +274,17 @@ do {
                 echo "El jugador ",$nombreJugador," no ganó ninguna partida";
             }else{
                 $historialPartidas = cargarPartidas();
-                echo "*********************************\n";
-                echo "Partida Wordix ",$elIndice,": palabra ",$historialPartidas[$elIndice]["palabraWordix"],"\n";
+                echo "**************************************\n";
+                echo "Partida Wordix ",$elIndice+1,": palabra ",$historialPartidas[$elIndice]["palabraWordix"],"\n";
                 echo "Jugador: ",$nombreJugador,"\n";
                 echo "Puntaje: ",$historialPartidas[$elIndice]["puntaje"],"\n";
-                echo "Intento: Adivinó la palabra en ",$historialPartidas[$elIndice]["intentos"],"\n";
-                echo "*********************************\n";
-                
+                echo "Intento: Adivinó la palabra en ",$historialPartidas[$elIndice]["intentos"]," intentos\n";
+                echo "**************************************\n";
             }
-            break;            
+            break;
+
+        case 5:
+            $nombreJugador = solicitarJugador();
+
         }
 }while ($opcion != 8); // 12) c)
