@@ -306,7 +306,7 @@ do {
         case 7:
             echo "Ingrese la palabra que desea agregar (debe ser de 5 letras): ";
             $palabraAgregada = trim(fgets(STDIN));
-            while(strlen($palabraAgregada!=5)){
+            while(strlen($palabraAgregada)!=5){
                 echo "La palabra debe ser de 5 letras, ingrese otra palabra: ";
                 $palabraAgregada = trim(fgets(STDIN));
             }
