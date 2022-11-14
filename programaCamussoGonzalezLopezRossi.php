@@ -112,21 +112,21 @@ function solicitarJugador() {
  */
 //COMPLETADO (PUNTO 6 EXPLICACION 3)
 function mostrarPartida(){
-    /* INT $aux, $minimoPartida, $maximoPartida, BOOLEAN $consulta */
-    $minimoPartida = 0;
-    echo "Ingrese un número de partida para mostrar: ";
-    $consulta = true;
-    $maximoPartida=count(cargarPartidas());
-    $arrayAux = solicitarNumeroEntre($minimoPartida, $maximoPartida);
-    /*do{
-        $aux = trim(fgets(STDIN));
-        if (){
-            $consulta = false;
-            //print_r(cargarPartidas()[$aux-1]);
-        } else {
-            echo "Número inválido, ingrese otro número";
-        }
-    }while($consulta);*/
+    /* Array $arrayAux, INT $maximoPartida, $puntajePartida, STRING $jugadorPartida, $palabraPartida */
+    $maximoPartida=count(cargarPartidas()); //Guarda el máximo de los índices del array
+    echo "Ingrese un número de partida para mostrar: (Entre 1 y ". $maximoPartida. ")";
+    $arrayAux = cargarPartidas()[(solicitarNumeroEntre(0, $maximoPartida))-1];
+    $palabraPartida = $arrayAux["palabraWordix"];
+    $jugadorPartida = $arrayAux["jugador"];
+    $puntajePartida = $arrayAux["puntaje"];
+
+    //Mostrar partida
+    echo "***************************************************\n";
+    echo "Partida WORDIX 13: palabra ". $palabraPartida;
+    echo "Jugador: ". $jugadorPartida;
+    echo "Puntaje: ". $puntajePartida. "puntos";
+    echo "Intento: ". (($arrayAux["intentos"]>0) ? $arrayAux["intentos"] : "No adivinó la palabra");
+    echo "***************************************************\n";
 }
 
 /** Esta funcion retorna dada una coleccion de partidas la informacion de UN jugador
