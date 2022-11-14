@@ -231,32 +231,16 @@ do {
             $cantidadPartidas = count($laColeccionPartidas);
             $nombreJugador = solicitarJugador();
             echo "¿Con que número de palabra desea jugar?: ";
-<<<<<<< Updated upstream
             $numeroPalabra = solicitarNumeroEntre(1,count($laColeccionPalabras)) - 1;
             for ($i = 0; $i < count($laColeccionPartidas); $i++) {
                 if ($laColeccionPartidas[$i]["jugador"] == $nombreJugador && $laColeccionPartidas[$i]["palabraWordix"] == $laColeccionPalabras[$numeroPalabra]) {
-=======
-            $numeroPalabra = solicitarNumeroEntre(1,$cantidadPartidas) - 1;
-             foreach ($laColeccionPartidas as $partida){
-                  if ($partida['jugador'] == $nombreJugador){
-                    if ($partida['palabraWordix']==$laColeccionPartidas[$numeroPalabra]['palabraWordix']){
-                        echo "no se puede wacho, ingresa otro num";
-                        $numeroPalabra = solicitarNumeroEntre(1,$cantidadPartidas) - 1;
-                    }
-                  }
-            }
-            $partida = jugarWordix($laColeccionPalabras[$numeroPalabra], $nombreJugador);
-
-            /*for ($i = 0; $i < count($laColeccionPartidas); $i++) {
-                if ($laColeccionPartidas[$i]["jugador"] == $nombreJugador && $laColeccionPartidas[$i]["palabraWordix"] == $laColeccionPartidas[$numeroPalabra]["palabraWordix"]) {
->>>>>>> Stashed changes
                     echo "La palabra solicitada ya fue utilizada por usted. Ingrese otro número: ";
                     $numeroPalabra = solicitarNumeroEntre(1,count($laColeccionPalabras)) - 1;
                     $i = -1;
                 }
             }
             $partida = jugarWordix($laColeccionPalabras[$numeroPalabra], $nombreJugador);
-            $laColeccionPartidas[count($laColeccionPartidas)] = $partida;*/
+            $laColeccionPartidas[count($laColeccionPartidas)] = $partida;
             break;
         case 2: 
             $nombreJugador=solicitarJugador();
