@@ -80,18 +80,15 @@ function indicePrimerPartidaGanada($jugador){
     $coleccionPartidas=cargarPartidas();
     $n = count($coleccionPartidas); 
     $i=0;
-    $contador = 0;
     $indice=-1;
     while ($i<$n && $i!=$indice){
         if ($jugador==$coleccionPartidas[$i]["jugador"] && $coleccionPartidas[$i]["puntaje"]>0 ){
         $indice=$i;
         }elseif($jugador==$coleccionPartidas[$i]["jugador"] && $coleccionPartidas[$i]["puntaje"]==0){
             $indice = -2;
-            $contador++;
             $i++;
         }else{
             $i++;
-            $contador++;
         }
     }
     return $indice;
