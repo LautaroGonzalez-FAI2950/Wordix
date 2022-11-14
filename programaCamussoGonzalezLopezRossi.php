@@ -274,17 +274,31 @@ do {
                 echo "El jugador ",$nombreJugador," no ganó ninguna partida";
             }else{
                 $historialPartidas = cargarPartidas();
-                echo "**************************************\n";
+                echo "******************************************\n";
                 echo "Partida Wordix ",$elIndice+1,": palabra ",$historialPartidas[$elIndice]["palabraWordix"],"\n";
                 echo "Jugador: ",$nombreJugador,"\n";
                 echo "Puntaje: ",$historialPartidas[$elIndice]["puntaje"],"\n";
                 echo "Intento: Adivinó la palabra en ",$historialPartidas[$elIndice]["intentos"]," intentos\n";
-                echo "**************************************\n";
+                echo "******************************************\n";
             }
             break;
 
         case 5:
             $nombreJugador = solicitarJugador();
-
+            $estadisticasJugador = extraerResumenJugador($nombreJugador);
+            echo "**************************************\n";
+            echo "Jugador: ",$nombreJugador,"\n";
+            echo "Partidas: ",$estadisticasJugador["cantidadPartidas"],"\n";
+            echo "Puntaje Total: ",$estadisticasJugador["puntajeTotal"],"\n";
+            echo "Victorias: ",$estadisticasJugador["victorias"],"\n";
+            echo "Porcentaje de Victorias: ",($estadisticasJugador["victorias"]*100)/$estadisticasJugador["partidas"],"\n";
+            echo "Adivinadas:","\n";
+            echo "\tIntento 1: ",$estadisticasJugador["intento1"];
+            echo "\tIntento 2: ",$estadisticasJugador["intento2"];
+            echo "\tIntento 3: ",$estadisticasJugador["intento3"];
+            echo "\tIntento 4: ",$estadisticasJugador["intento4"];
+            echo "\tIntento 5: ",$estadisticasJugador["intento5"];
+            echo "\tIntento 6: ",$estadisticasJugador["intento6"];
+            echo "**************************************\n";
         }
 }while ($opcion != 8); // 12) c)
