@@ -266,8 +266,7 @@ do {
             break;
         
         case 4:
-            echo "Ingrese el nombre del jugador para ver su primera partida ganada: ";
-            $nombreJugador = trim(fgets(STDIN));
+            $nombreJugador = solicitarJugador();
             $elIndice = indicePrimerPartidaGanada($nombreJugador);
             if($elIndice == -1){
                 echo "No existe el jugador.";
@@ -279,8 +278,10 @@ do {
                 echo "Partida Wordix ",$elIndice,": palabra ",$historialPartidas[$elIndice]["palabraWordix"],"\n";
                 echo "Jugador: ",$nombreJugador,"\n";
                 echo "Puntaje: ",$historialPartidas[$elIndice]["puntaje"],"\n";
+                echo "Intento: Adivinó la palabra en ",$historialPartidas[$elIndice]["intentos"],"\n";
                 echo "*********************************\n";
                 
-            break;
-    }
-} while ($opcion != 8); // 12) c)
+            }
+            break;            
+        }
+}while ($opcion != 8); // 12) c)
