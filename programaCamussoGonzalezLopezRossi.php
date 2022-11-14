@@ -186,21 +186,6 @@ function mostrarColeccionPartida(){
     print_r($partidas);
 }
 
-/**************************************/
-/*********** PROGRAMA PRINCIPAL *******/
-/**************************************/
-//Declaración de variables:
-
-
-//Inicialización de variables:
-
-
-//Proceso:
-
-$partida = jugarWordix("MELON", strtolower("MaJo"));
-//print_r($partida);
-//imprimirResultado($partida);
-
 /**
  * Esta funcion muestra el menu de wordix y compruba si la opcion seleccionada por el usuario
  * esta dentro del rango de opciones
@@ -228,16 +213,38 @@ function seleccionarOpcion(){
     solicitarNumeroEntre($minimoOpcion,$maximoOpcion);       
     return $numeroOpcion;
 }
-cargarPartidas(); // 12) a)
-cargarColeccionPalabras(); // 12) b)
-$opcion = 0;
+
+/**************************************/
+/*********** PROGRAMA PRINCIPAL *******/
+/**************************************/
+//Declaración de variables:
+// STRING $nombreJugador
+// INT $numeroPalabra
+// ARRAY $laColeccionPalabras, $laColeccionPartidas
+//Inicialización de variables:
+
+
+//Proceso:
+$laColeccionPartidas = cargarPartidas(); // 12) a)
+$laColeccionPalabras = cargarColeccionPalabras(); // 12) b)
 
 do {
     $opcion = seleccionarOpcion($minimo,$maximo);
     switch ($opcion) {
         case 1: 
-            //completar qué secuencia de pasos ejecutar si el usuario elige la opción 1
-
+            $nombreJugador = solicitarJugador();
+            escribirMensajeBienvenida($nombreJugador);
+            echo "¿Con que número de palabra desea jugar?: ";
+            $numeroPalabra = solicitarNumeroEntre(0,count($laColeccionPalabras)-1);
+            for ($i = 0; $i < count($laColeccionPartidas)-1; $i++) {
+                if ($laColeccionPartidas[$numeroPalabra]["palabraWordix"] == $laColeccionPartidas[$i]["palabraWordix"]) {
+                    echo "La palabra solicitada ya fue utilizada por usted. Ingrese otro número: ";
+                    $numeroPalabra = solicitarNumeroEntre(0,count($laColeccionPalabras)-1);
+                    $i = -1;
+                }
+            }
+            $partida = jugarWordix($laColeccionPalabras[$numeroPalabra], $nombreJugador);
+            $laColeccionPartidas[count($laColeccionPartidas)] = $partida;
             break;
         case 2: 
             //completar qué secuencia de pasos ejecutar si el usuario elige la opción 2

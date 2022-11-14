@@ -132,7 +132,7 @@ function escribirMensajeBienvenida($usuario)
 
 
 /**
- * Pregunta si la cadena ingresada está comformada completamente de STRING
+ * Pregunta si la cadena ingresada está conformada completamente de STRING
  * @param STRING $cadena
  * @return STRING
  */
