@@ -167,7 +167,7 @@ $coleccionPartidas=cargarPartidas();
     return $resumenUnJugador;
 }
 
-/** Esta función compara una coleccion de partida y las ordena alfabéticamente según jugador y palabra
+/** Esta función compara una coleccion de partida y las ordena alfabéticamente según jugador y palabra jugada
  * @param Array $a
  * @param Array $b
  * @return Int
@@ -178,7 +178,7 @@ function comparacion($a,$b){
     }
     return (($a["jugador"]<$b["jugador"]) ? -1 : 1);
 }
-/** Muestra una colección de partidas
+/** Muestra la colección de partidas total
  */
 function mostrarColeccionPartida(){
     $partidas = cargarPartidas();
@@ -189,7 +189,6 @@ function mostrarColeccionPartida(){
 /**************************************/
 /*********** PROGRAMA PRINCIPAL *******/
 /**************************************/
-mostrarColeccionPartida();
 //Declaración de variables:
 
 
@@ -209,7 +208,11 @@ $partida = jugarWordix("MELON", strtolower("MaJo"));
  * (Completado punto 3 explicación 3)
  */
 function seleccionarOpcion(){
-    //Int, almacena el valor de la opcion elegida
+    /*INT $numeroOpcion, $minimoOpcion, $maximoOpcion */
+
+    $minimoOpcion = 1;
+    $maximoOpcion = 8;
+    //Almacena el valor de la opcion elegida
     $numeroOpcion = 0; 
     //Muestra el menu
     echo "Menu de opciones:\n";
@@ -222,12 +225,7 @@ function seleccionarOpcion(){
     echo "\t7) Agregar una palabra de 5 letras a Wordix\n";
     echo "\t8) Salir\n";
     echo "Ingrese la opción que desea elegir: ";
-    $numeroOpcion = trim(fgets(STDIN));//Obtiene la opcion del usuario        
-        while($numeroOpcion < 1 || $numeroOpcion > 8){
-            //Si la opcion no es valida, pide al usuario que ingrese otra opcion
-            echo "La opción ingresada no es válida, por favor ingrese una opción válida: ";
-            $numeroOpcion = trim(fgets(STDIN));
-        }    
+    solicitarNumeroEntre($minimoOpcion,$maximoOpcion);       
     return $numeroOpcion;
 }
 $laColeccionPartidas=cargarPartidas(); // 12) a)
@@ -235,7 +233,7 @@ $laColeccionPalabras=cargarColeccionPalabras(); // 12) b)
 $opcion = 0;
 
 do {
-    $opcion = seleccionarOpcion();
+    $opcion = seleccionarOpcion($minimo,$maximo);
     switch ($opcion) {
         case 1: 
             //completar qué secuencia de pasos ejecutar si el usuario elige la opción 1
