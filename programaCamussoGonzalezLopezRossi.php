@@ -221,14 +221,12 @@ function seleccionarOpcion(){
     echo "\t7) Agregar una palabra de 5 letras a Wordix\n";
     echo "\t8) Salir\n";
     echo "Ingrese la opción que desea elegir: ";
-    $numeroOpcion = trim(fgets(STDIN));//Obtiene la opcion del usuario
-    if($numeroOpcion < 1 || $numeroOpcion > 9){
-        //Si la opcion no es valida, pide al usuario que ingrese otra opcion
-        do{
+    $numeroOpcion = trim(fgets(STDIN));//Obtiene la opcion del usuario        
+        while($numeroOpcion < 1 || $numeroOpcion > 8){
+            //Si la opcion no es valida, pide al usuario que ingrese otra opcion
             echo "La opción ingresada no es válida, por favor ingrese una opción válida: ";
             $numeroOpcion = trim(fgets(STDIN));
-        }while($numeroOpcion < 0 || $numeroOpcion > 9);
-    }      
+        }    
     return $numeroOpcion;
 }
 
