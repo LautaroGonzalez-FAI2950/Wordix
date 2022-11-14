@@ -275,12 +275,12 @@ do {
                 echo "El jugador ",$nombreJugador," no ganó ninguna partida";
             }else{
                 $historialPartidas = cargarPartidas();
-                echo "*********************************\n";
+                echo "**************************************\n";
                 echo "Partida Wordix ",$elIndice+1,": palabra ",$historialPartidas[$elIndice]["palabraWordix"],"\n";
                 echo "Jugador: ",$nombreJugador,"\n";
                 echo "Puntaje: ",$historialPartidas[$elIndice]["puntaje"],"\n";
                 echo "Intento: Adivinó la palabra en ",$historialPartidas[$elIndice]["intentos"]," intentos\n";
-                echo "*********************************\n";
+                echo "**************************************\n";
             }
             break;            
         }
