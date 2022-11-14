@@ -76,19 +76,23 @@ function agregarPalabra ($coleccionPalabras, $nuevaPalabra) {
  * COMPLETADO punto 8 Ejercicio 3
  */
 function indicePrimerPartidaGanada($jugador){
-    //int $n, $i, $indice, Array $coleccionPartidas
+    //int $n, $i, $contador, $indice, Array $coleccionPartidas
     $coleccionPartidas=cargarPartidas();
     $n = count($coleccionPartidas); 
     $i=0;
+    $contador = 0;
     $indice=-1;
     while ($i<$n && $i!=$indice){
         if ($jugador==$coleccionPartidas[$i]["jugador"] && $coleccionPartidas[$i]["puntaje"]>0 ){
         $indice=$i;
         }elseif($jugador==$coleccionPartidas[$i]["jugador"] && $coleccionPartidas[$i]["puntaje"]==0){
             $indice = -2;
+            $contador++;
             $i++;
+        }else{
+            $i++;
+            $contador++;
         }
-        else $i++;
     }
     return $indice;
 }
@@ -271,7 +275,14 @@ do {
             $nombreJugador = trim(fgets(STDIN));
             $elIndice = indicePrimerPartidaGanada($nombreJugador);
             if($elIndice == -1){
-                echo ""
+                echo "No existe el jugador.";
+            }elseif($elIndice == -2){
+                echo "El jugador ",$nombreJugador," no ganó ninguna partida";
+            }else{
+                $historialPartidas = cargarPartidas();
+                echo "*********************************\n";
+                echo "Partida Wordix ";
+                echo "*********************************\n";
             }
             break;
     }
