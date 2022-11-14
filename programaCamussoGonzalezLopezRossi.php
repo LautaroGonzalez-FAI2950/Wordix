@@ -213,10 +213,6 @@ function seleccionarOpcion(){
     solicitarNumeroEntre($minimoOpcion,$maximoOpcion);       
     return $numeroOpcion;
 }
-$laColeccionPartidas=cargarPartidas(); // 12) a)
-$laColeccionPalabras=cargarColeccionPalabras(); // 12) b)
-$opcion = 0;
-
 /**************************************/
 /*********** PROGRAMA PRINCIPAL *******/
 /**************************************/
