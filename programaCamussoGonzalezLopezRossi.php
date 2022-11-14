@@ -291,14 +291,14 @@ do {
             echo "Partidas: ",$estadisticasJugador["cantidadPartidas"],"\n";
             echo "Puntaje Total: ",$estadisticasJugador["puntajeTotal"],"\n";
             echo "Victorias: ",$estadisticasJugador["victorias"],"\n";
-            echo "Porcentaje de Victorias: ",($estadisticasJugador["victorias"]*100)/$estadisticasJugador["partidas"],"\n";
+            echo "Porcentaje de Victorias: ",(int)(($estadisticasJugador["victorias"]*100)/$estadisticasJugador["cantidadPartidas"]),"%\n";
             echo "Adivinadas:","\n";
-            echo "\tIntento 1: ",$estadisticasJugador["intento1"];
-            echo "\tIntento 2: ",$estadisticasJugador["intento2"];
-            echo "\tIntento 3: ",$estadisticasJugador["intento3"];
-            echo "\tIntento 4: ",$estadisticasJugador["intento4"];
-            echo "\tIntento 5: ",$estadisticasJugador["intento5"];
-            echo "\tIntento 6: ",$estadisticasJugador["intento6"];
+            echo "\tIntento 1: ",$estadisticasJugador["intento1"],"\n";
+            echo "\tIntento 2: ",$estadisticasJugador["intento2"],"\n";
+            echo "\tIntento 3: ",$estadisticasJugador["intento3"],"\n";
+            echo "\tIntento 4: ",$estadisticasJugador["intento4"],"\n";
+            echo "\tIntento 5: ",$estadisticasJugador["intento5"],"\n";
+            echo "\tIntento 6: ",$estadisticasJugador["intento6"],"\n";
             echo "**************************************\n";
         }
 }while ($opcion != 8); // 12) c)
