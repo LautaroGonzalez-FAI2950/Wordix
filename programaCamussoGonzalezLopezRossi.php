@@ -235,7 +235,7 @@ do {
             echo "¿Con que número de palabra desea jugar?: ";
             $numeroPalabra = solicitarNumeroEntre(1,count($laColeccionPalabras)) - 1;
             for ($i = 0; $i < count($laColeccionPartidas); $i++) {
-                if ($laColeccionPartidas[$i]["jugador"] == $nombreJugador && $laColeccionPartidas[$i]["palabraWordix"] == $laColeccionPartidas[$numeroPalabra]["palabraWordix"]) {
+                if ($laColeccionPartidas[$i]["jugador"] == $nombreJugador && $laColeccionPartidas[$i]["palabraWordix"] == $laColeccionPalabras[$numeroPalabra]) {
                     echo "La palabra solicitada ya fue utilizada por usted. Ingrese otro número: ";
                     $numeroPalabra = solicitarNumeroEntre(1,count($laColeccionPalabras)) - 1;
                     $i = -1;
@@ -249,7 +249,7 @@ do {
             $laColeccionPalabras=cargarColeccionPalabras();
             $numeroPalabra=rand(0, count($laColeccionPalabras)-1);
             for ($i = 0; $i < count($laColeccionPartidas)-1; $i++) {
-                if ($laColeccionPartidas[$i]["jugador"] == $nombreJugador && $laColeccionPartidas[$i]["palabraWordix"] == $laColeccionPartidas[$numeroPalabra]["palabraWordix"]) {
+                if ($laColeccionPartidas[$i]["jugador"] == $nombreJugador && $laColeccionPartidas[$i]["palabraWordix"] == $laColeccionPalabras[$numeroPalabra]) {
                     echo "La palabra generada aleatoriamente ya fue utilizada por usted. Generando uno nuevo: ";
                     $numeroPalabra = rand(0,count($laColeccionPalabras)-1);
                     $i = -1;
