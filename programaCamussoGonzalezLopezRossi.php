@@ -218,8 +218,8 @@ function seleccionarOpcion(){
 /**************************************/
 //Declaración de variables:
 // STRING $nombreJugador
-// INT $numeroPalabra
-// ARRAY $laColeccionPalabras, $laColeccionPartidas
+// INT $numeroPalabra, $max
+// ARRAY $laColeccionPalabras, $laColeccionPartidas, $partida
 //Inicialización de variables:
 
 
@@ -248,6 +248,7 @@ do {
         case 2: 
             $nombreJugador=solicitarJugador();
             $laColeccionPalabras=cargarColeccionPalabras();
+            escribirMensajeBienvenida($nombreJugador);
             $max=count($laColeccionPalabras)-1;
             $numeroPalabra=rand(0,$max);
             for ($i = 0; $i < count($laColeccionPartidas)-1; $i++) {
