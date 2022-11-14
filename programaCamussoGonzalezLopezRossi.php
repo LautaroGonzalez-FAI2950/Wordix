@@ -219,7 +219,7 @@ function seleccionarOpcion(){
 /**************************************/
 //Declaración de variables:
 // STRING $nombreJugador
-// INT $numeroPalabra, $max
+// INT $numeroPalabra, $i
 // ARRAY $laColeccionPalabras, $laColeccionPartidas, $partida
 //Inicialización de variables:
 
@@ -235,7 +235,7 @@ do {
             $nombreJugador = solicitarJugador();
             echo "¿Con que número de palabra desea jugar?: ";
             $numeroPalabra = solicitarNumeroEntre(1,count($laColeccionPalabras)) - 1;
-            for ($i = 0; $i < count($laColeccionPartidas)-1; $i++) {
+            for ($i = 0; $i < count($laColeccionPartidas); $i++) {
                 if ($laColeccionPartidas[$i]["jugador"] == $nombreJugador && $laColeccionPartidas[$i]["palabraWordix"] == $laColeccionPartidas[$numeroPalabra]["palabraWordix"]) {
                     echo "La palabra solicitada ya fue utilizada por usted. Ingrese otro número: ";
                     $numeroPalabra = solicitarNumeroEntre(1,count($laColeccionPalabras)) - 1;
@@ -248,12 +248,11 @@ do {
         case 2: 
             $nombreJugador=solicitarJugador();
             $laColeccionPalabras=cargarColeccionPalabras();
-            $max=count($laColeccionPalabras)-1;
-            $numeroPalabra=rand(0,$max);
+            $numeroPalabra=rand(0, count($laColeccionPalabras)-1);
             for ($i = 0; $i < count($laColeccionPartidas)-1; $i++) {
                 if ($laColeccionPartidas[$i]["jugador"] == $nombreJugador && $laColeccionPartidas[$i]["palabraWordix"] == $laColeccionPartidas[$numeroPalabra]["palabraWordix"]) {
                     echo "La palabra generada aleatoriamente ya fue utilizada por usted. Generando uno nuevo: ";
-                    $numeroPalabra = rand(0,$max);
+                    $numeroPalabra = rand(0,count($laColeccionPalabras)-1);
                     $i = -1;
                 }
             }
