@@ -276,7 +276,7 @@ do {
             }else{
                 $historialPartidas = cargarPartidas();
                 echo "*********************************\n";
-                echo "Partida Wordix ",$elIndice,": palabra ",$historialPartidas[$elIndice]["palabraWordix"],"\n";
+                echo "Partida Wordix ",$elIndice+1,": palabra ",$historialPartidas[$elIndice]["palabraWordix"],"\n";
                 echo "Jugador: ",$nombreJugador,"\n";
                 echo "Puntaje: ",$historialPartidas[$elIndice]["puntaje"],"\n";
                 echo "Intento: Adivinó la palabra en ",$historialPartidas[$elIndice]["intentos"]," intentos\n";
