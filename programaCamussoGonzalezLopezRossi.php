@@ -75,7 +75,7 @@ function agregarPalabra ($coleccionPalabras, $nuevaPalabra) {
  * @return int
  * COMPLETADO punto 8 Ejercicio 3
  */
-function indicePrimerPartidaGanada($coleccionPartidas, $jugador){
+function indicePrimerPartidaGanada($jugador){
     //int $n, $i, $indice, Array $coleccionPartidas
     $coleccionPartidas=cargarPartidas();
     $n = count($coleccionPartidas); 
@@ -265,6 +265,9 @@ do {
 
             break;
         
-            //...
+        case 4:
+            echo "Ingrese el nombre del jugador para ver su primera partida ganada: ";
+            $nombreJugador = trim(fgets(STDIN));
+            indicePrimerPartidaGanada($nombreJugador);
     }
 } while ($opcion != 8); // 12) c)
