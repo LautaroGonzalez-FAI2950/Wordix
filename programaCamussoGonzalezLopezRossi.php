@@ -232,7 +232,7 @@ $laColeccionPartidas = cargarPartidas(); // 12) a)
 $laColeccionPalabras = cargarColeccionPalabras(); // 12) b)
 
 do {
-    $opcion = seleccionarOpcion($minimo,$maximo);
+    $opcion = seleccionarOpcion();
     switch ($opcion) {
         case 1: 
             $nombreJugador = solicitarJugador();
