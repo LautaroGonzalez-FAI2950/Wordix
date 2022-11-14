@@ -123,7 +123,7 @@ function mostrarPartida(){
 
     //Mostrar partida
     echo "***************************************************\n";
-    echo "Partida WORDIX".$partidaJugada.": palabra ". $palabraPartida. "\n";
+    echo "Partida WORDIX ".$partidaJugada.": palabra ". $palabraPartida. "\n";
     echo "Jugador: ". $jugadorPartida. "\n";
     echo "Puntaje: ". $puntajePartida. " puntos \n";
     echo "Intento: ". (($arrayAux["intentos"]>0) ? "Adivinó la palabra en ". $arrayAux["intentos"]. " intentos \n" : "No adivinó la palabra \n");
@@ -263,6 +263,7 @@ do {
             break;
         case 3: 
             mostrarPartida();
+            sleep(5);
 
             break;
         
