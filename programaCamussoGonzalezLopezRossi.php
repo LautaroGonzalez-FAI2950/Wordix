@@ -71,18 +71,16 @@ function agregarPalabra ($coleccionPalabras, $nuevaPalabra) {
 }
 /**
  * Esta funcion devuelve el indice de la primera partida ganada por un jugador en especifico
- * @param array $coleccionPartidas
  * @param string $jugador
  * @return int
  * COMPLETADO punto 8 Ejercicio 3
  */
 function indicePrimerPartidaGanada($coleccionPartidas, $jugador){
-    //int $n, i, indice Boolean $cortar
+    //int $n, $i, $indice, Array $coleccionPartidas
     $coleccionPartidas=cargarPartidas();
     $n = count($coleccionPartidas); 
     $i=0;
     $indice=-1;
-    $cortar= true;
     while ($i<$n && $i!=$indice){
         if ($jugador==$coleccionPartidas[$i]["jugador"] && $coleccionPartidas[$i]["puntaje"]>0 ){
         $indice=$i;
