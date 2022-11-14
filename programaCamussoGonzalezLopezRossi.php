@@ -279,9 +279,8 @@ do {
                 echo "Partida Wordix ",$elIndice,": palabra ",$historialPartidas[$elIndice]["palabraWordix"],"\n";
                 echo "Jugador: ",$nombreJugador,"\n";
                 echo "Puntaje: ",$historialPartidas[$elIndice]["puntaje"],"\n";
-                echo "Intento: Adivinó la palabra en ",$historialPartidas[$elIndice]["intentos"],"\n";
+                echo "Intento: Adivinó la palabra en ",$historialPartidas[$elIndice]["intentos"]," intentos\n";
                 echo "*********************************\n";
-                
             }
             break;            
         }
