@@ -229,14 +229,12 @@ function seleccionarOpcion(){
         }    
     return $numeroOpcion;
 }
+cargarPartidas(); // 12) a)
+cargarColeccionPalabras(); // 12) b)
+$opcion = 0;
 
-
-
-/*
 do {
-    $opcion = ...;
-
-    
+    $opcion = seleccionarOpcion();
     switch ($opcion) {
         case 1: 
             //completar qué secuencia de pasos ejecutar si el usuario elige la opción 1
@@ -253,5 +251,4 @@ do {
         
             //...
     }
-} while ($opcion != X);
-*/
+} while ($opcion != 8); // 12) c)
