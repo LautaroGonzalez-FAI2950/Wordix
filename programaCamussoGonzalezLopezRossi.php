@@ -131,13 +131,12 @@ function mostrarPartida(){
 }
 
 /** Esta funcion retorna dada una coleccion de partidas la informacion de UN jugador
- * @param array $coleccionPartidas
  * @param string $jugador
  * @return array
  */
-function extraerResumenJugador($coleccionPartidas,$jugador) {
+function extraerResumenJugador($jugador) {
 // array $resumenUnJugador int $n,$i, $contPartidasGanadas, $contPartidasTotales, $puntajeTotalUnJugador, boolean $existe
-$coleccionPartidas=cargarPartidas();
+    $coleccionPartidas=cargarPartidas();
     $n = count($coleccionPartidas); 
     $contPartidasGanadas= 0;
     $contPartidasTotales= 0;
@@ -283,6 +282,10 @@ do {
                 echo "Intento: Adivinó la palabra en ",$historialPartidas[$elIndice]["intentos"]," intentos\n";
                 echo "**************************************\n";
             }
-            break;            
+            break;
+
+        case 5:
+            $nombreJugador = solicitarJugador();
+
         }
 }while ($opcion != 8); // 12) c)
