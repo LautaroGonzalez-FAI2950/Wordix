@@ -111,19 +111,16 @@ function solicitarJugador() {
  * Ingresa un valor y muestra la partida con ese valor
  */
 //COMPLETADO (PUNTO 6 EXPLICACION 3)
-function mostrarPartida(){
+function mostrarPartida($partidas,$numeroPartida){
     /* Array $arrayAux, INT $maximoPartida, $puntajePartida, $partidaJugada, STRING $jugadorPartida, $palabraPartida */
-    $maximoPartida=count(cargarPartidas()); //Guarda el máximo de los índices del array
-    echo "Ingrese un número de partida para mostrar (Entre 1 y ". $maximoPartida. "): ";
-    $partidaJugada = solicitarNumeroEntre(1, $maximoPartida)-1; //Guarda un valor como índice
-    $arrayAux = cargarPartidas()[$partidaJugada];
+    $arrayAux = $partidas[$numeroPartida];
     $palabraPartida = $arrayAux["palabraWordix"];
     $jugadorPartida = $arrayAux["jugador"];
     $puntajePartida = $arrayAux["puntaje"];
 
     //Mostrar partida
     echo "***************************************************\n";
-    echo "Partida WORDIX ".$partidaJugada.": palabra ". $palabraPartida. "\n";
+    echo "Partida WORDIX ".$numeroPartida.": palabra ". $palabraPartida. "\n";
     echo "Jugador: ". $jugadorPartida. "\n";
     echo "Puntaje: ". $puntajePartida. " puntos \n";
     echo "Intento: ". (($arrayAux["intentos"]>0) ? "Adivinó la palabra en ". $arrayAux["intentos"]. " intentos \n" : "No adivinó la palabra \n");
@@ -231,18 +228,35 @@ do {
     $opcion = seleccionarOpcion();
     switch ($opcion) {
         case 1: 
+            $cantidadPartidas = count($laColeccionPartidas);
             $nombreJugador = solicitarJugador();
             echo "¿Con que número de palabra desea jugar?: ";
+<<<<<<< Updated upstream
             $numeroPalabra = solicitarNumeroEntre(1,count($laColeccionPalabras)) - 1;
             for ($i = 0; $i < count($laColeccionPartidas); $i++) {
                 if ($laColeccionPartidas[$i]["jugador"] == $nombreJugador && $laColeccionPartidas[$i]["palabraWordix"] == $laColeccionPalabras[$numeroPalabra]) {
+=======
+            $numeroPalabra = solicitarNumeroEntre(1,$cantidadPartidas) - 1;
+             foreach ($laColeccionPartidas as $partida){
+                  if ($partida['jugador'] == $nombreJugador){
+                    if ($partida['palabraWordix']==$laColeccionPartidas[$numeroPalabra]['palabraWordix']){
+                        echo "no se puede wacho, ingresa otro num";
+                        $numeroPalabra = solicitarNumeroEntre(1,$cantidadPartidas) - 1;
+                    }
+                  }
+            }
+            $partida = jugarWordix($laColeccionPalabras[$numeroPalabra], $nombreJugador);
+
+            /*for ($i = 0; $i < count($laColeccionPartidas); $i++) {
+                if ($laColeccionPartidas[$i]["jugador"] == $nombreJugador && $laColeccionPartidas[$i]["palabraWordix"] == $laColeccionPartidas[$numeroPalabra]["palabraWordix"]) {
+>>>>>>> Stashed changes
                     echo "La palabra solicitada ya fue utilizada por usted. Ingrese otro número: ";
                     $numeroPalabra = solicitarNumeroEntre(1,count($laColeccionPalabras)) - 1;
                     $i = -1;
                 }
             }
             $partida = jugarWordix($laColeccionPalabras[$numeroPalabra], $nombreJugador);
-            $laColeccionPartidas[count($laColeccionPartidas)] = $partida;
+            $laColeccionPartidas[count($laColeccionPartidas)] = $partida;*/
             break;
         case 2: 
             $nombreJugador=solicitarJugador();
@@ -260,7 +274,9 @@ do {
 
             break;
         case 3: 
-            mostrarPartida();
+            echo "Ingrese un número de partida para mostrar (Entre 1 y ". $maximoPartida. "): ";
+            $partidaJugada = solicitarNumeroEntre(1, count($laColeccionPartidas))-1; //Guarda un valor como índice
+            mostrarPartida($laColeccionPartidas,$partidaJugada);
             sleep(5);
 
             break;
