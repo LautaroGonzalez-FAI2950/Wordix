@@ -84,6 +84,9 @@ function indicePrimerPartidaGanada($jugador){
     while ($i<$n && $i!=$indice){
         if ($jugador==$coleccionPartidas[$i]["jugador"] && $coleccionPartidas[$i]["puntaje"]>0 ){
         $indice=$i;
+        }elseif($jugador==$coleccionPartidas[$i]["jugador"] && $coleccionPartidas[$i]["puntaje"]==0){
+            $indice = -2;
+            $i++;
         }
         else $i++;
     }
@@ -266,8 +269,10 @@ do {
         case 4:
             echo "Ingrese el nombre del jugador para ver su primera partida ganada: ";
             $nombreJugador = trim(fgets(STDIN));
-            indicePrimerPartidaGanada($nombreJugador);
-            
+            $elIndice = indicePrimerPartidaGanada($nombreJugador);
+            if($elIndice == -1){
+                echo ""
+            }
             break;
     }
 } while ($opcion != 8); // 12) c)
