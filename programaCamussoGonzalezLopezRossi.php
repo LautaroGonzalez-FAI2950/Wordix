@@ -276,9 +276,11 @@ do {
             }else{
                 $historialPartidas = cargarPartidas();
                 echo "*********************************\n";
-                echo "Partida Wordix ";
+                echo "Partida Wordix ",$elIndice,": palabra ",$historialPartidas[$elIndice]["palabraWordix"],"\n";
+                echo "Jugador: ",$nombreJugador,"\n";
+                echo "Puntaje: ",$historialPartidas[$elIndice]["puntaje"],"\n";
                 echo "*********************************\n";
-            }
+                
             break;
     }
 } while ($opcion != 8); // 12) c)
