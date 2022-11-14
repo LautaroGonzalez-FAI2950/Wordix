@@ -130,7 +130,7 @@ function mostrarPartida(){
  * @return array
  */
 function extraerResumenJugador($coleccionPartidas,$jugador) {
-// array $resumenUnJugador
+// array $resumenUnJugador int $n,$i, $contPartidasGanadas, $contPartidasTotales, $puntajeTotalUnJugador, boolean $existe
 $coleccionPartidas=cargarPartidas();
     $n = count($coleccionPartidas); 
     $contPartidasGanadas= 0;
@@ -213,6 +213,9 @@ function seleccionarOpcion(){
     solicitarNumeroEntre($minimoOpcion,$maximoOpcion);       
     return $numeroOpcion;
 }
+$laColeccionPartidas=cargarPartidas(); // 12) a)
+$laColeccionPalabras=cargarColeccionPalabras(); // 12) b)
+$opcion = 0;
 
 /**************************************/
 /*********** PROGRAMA PRINCIPAL *******/
@@ -247,7 +250,19 @@ do {
             $laColeccionPartidas[count($laColeccionPartidas)] = $partida;
             break;
         case 2: 
-            //completar qué secuencia de pasos ejecutar si el usuario elige la opción 2
+            $nombreJugador=solicitarJugador();
+            $laColeccionPalabras=cargarColeccionPalabras();
+            $max=count($laColeccionPalabras)-1;
+            $numeroPalabra=rand(0,$max);
+            for ($i = 0; $i < count($laColeccionPartidas)-1; $i++) {
+                if ($laColeccionPartidas[$numeroPalabra]["palabraWordix"] == $laColeccionPartidas[$i]["palabraWordix"]) {
+                    echo "La palabra generada aleatoriamente ya fue utilizada por usted. Generando uno nuevo: ";
+                    $numeroPalabra = rand(0,$max);
+                    $i = -1;
+                }
+            }
+            $partida = jugarWordix($laColeccionPalabras[$numeroPalabra], $nombreJugador);
+            $laColeccionPartidas[count($laColeccionPartidas)]=$partida;
 
             break;
         case 3: 
