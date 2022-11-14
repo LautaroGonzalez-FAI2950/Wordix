@@ -267,5 +267,7 @@ do {
             echo "Ingrese el nombre del jugador para ver su primera partida ganada: ";
             $nombreJugador = trim(fgets(STDIN));
             indicePrimerPartidaGanada($nombreJugador);
+            
+            break;
     }
 } while ($opcion != 8); // 12) c)
