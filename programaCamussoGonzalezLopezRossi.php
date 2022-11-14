@@ -258,11 +258,10 @@ do {
 
             break;
         case 3: 
-            echo "Ingrese un número de partida para mostrar (Entre 1 y ". $maximoPartida. "): ";
+            echo "Ingrese un número de partida para mostrar (Entre 1 y ". count($laColeccionPalabras). "): ";
             $partidaJugada = solicitarNumeroEntre(1, count($laColeccionPartidas))-1; //Guarda un valor como índice
             mostrarPartida($laColeccionPartidas,$partidaJugada);
             sleep(5);
-
             break;
         
         case 4:
