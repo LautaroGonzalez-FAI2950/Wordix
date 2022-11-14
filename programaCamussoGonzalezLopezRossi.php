@@ -71,18 +71,16 @@ function agregarPalabra ($coleccionPalabras, $nuevaPalabra) {
 }
 /**
  * Esta funcion devuelve el indice de la primera partida ganada por un jugador en especifico
- * @param array $coleccionPartidas
  * @param string $jugador
  * @return int
  * COMPLETADO punto 8 Ejercicio 3
  */
 function indicePrimerPartidaGanada($coleccionPartidas, $jugador){
-    //int $n, i, indice Boolean $cortar
+    //int $n, $i, $indice, Array $coleccionPartidas
     $coleccionPartidas=cargarPartidas();
     $n = count($coleccionPartidas); 
     $i=0;
     $indice=-1;
-    $cortar= true;
     while ($i<$n && $i!=$indice){
         if ($jugador==$coleccionPartidas[$i]["jugador"] && $coleccionPartidas[$i]["puntaje"]>0 ){
         $indice=$i;
@@ -210,17 +208,13 @@ function seleccionarOpcion(){
     $numeroOpcion = solicitarNumeroEntre(1,8);
     return ($numeroOpcion);       
 }
-$laColeccionPartidas=cargarPartidas(); // 12) a)
-$laColeccionPalabras=cargarColeccionPalabras(); // 12) b)
-$opcion = 0;
-
 /**************************************/
 /*********** PROGRAMA PRINCIPAL *******/
 /**************************************/
 //Declaración de variables:
 // STRING $nombreJugador
-// INT $numeroPalabra
-// ARRAY $laColeccionPalabras, $laColeccionPartidas
+// INT $numeroPalabra, $max
+// ARRAY $laColeccionPalabras, $laColeccionPartidas, $partida
 //Inicialización de variables:
 
 
@@ -249,6 +243,7 @@ do {
         case 2: 
             $nombreJugador=solicitarJugador();
             $laColeccionPalabras=cargarColeccionPalabras();
+            escribirMensajeBienvenida($nombreJugador);
             $max=count($laColeccionPalabras)-1;
             $numeroPalabra=rand(0,$max);
             for ($i = 0; $i < count($laColeccionPartidas)-1; $i++) {
