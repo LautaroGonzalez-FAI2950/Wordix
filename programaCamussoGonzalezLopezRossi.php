@@ -114,16 +114,17 @@ function mostrarPartida(){
     $consulta = true;
     $maximoPartida=count(cargarPartidas());
     $arrayAux = solicitarNumeroEntre($minimoPartida, $maximoPartida);
-    do{
+    /*do{
         $aux = trim(fgets(STDIN));
         if (){
             $consulta = false;
-            print_r(cargarPartidas()[$aux-1]);
+            //print_r(cargarPartidas()[$aux-1]);
         } else {
             echo "Número inválido, ingrese otro número";
         }
-    }while($consulta);
+    }while($consulta);*/
 }
+
 /** Esta funcion retorna dada una coleccion de partidas la informacion de UN jugador
  * @param array $coleccionPartidas
  * @param string $jugador
