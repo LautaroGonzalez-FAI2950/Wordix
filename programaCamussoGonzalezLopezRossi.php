@@ -232,7 +232,6 @@ do {
     switch ($opcion) {
         case 1: 
             $nombreJugador = solicitarJugador();
-            escribirMensajeBienvenida($nombreJugador);
             echo "¿Con que número de palabra desea jugar?: ";
             $numeroPalabra = solicitarNumeroEntre(1,count($laColeccionPalabras)) - 1;
             for ($i = 0; $i < count($laColeccionPartidas)-1; $i++) {
@@ -248,7 +247,6 @@ do {
         case 2: 
             $nombreJugador=solicitarJugador();
             $laColeccionPalabras=cargarColeccionPalabras();
-            escribirMensajeBienvenida($nombreJugador);
             $max=count($laColeccionPalabras)-1;
             $numeroPalabra=rand(0,$max);
             for ($i = 0; $i < count($laColeccionPartidas)-1; $i++) {
