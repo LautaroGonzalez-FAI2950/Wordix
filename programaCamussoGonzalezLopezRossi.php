@@ -252,7 +252,7 @@ do {
             $max=count($laColeccionPalabras)-1;
             $numeroPalabra=rand(0,$max);
             for ($i = 0; $i < count($laColeccionPartidas)-1; $i++) {
-                if ($laColeccionPartidas[$numeroPalabra]["palabraWordix"] == $laColeccionPartidas[$i]["palabraWordix"]) {
+                if ($laColeccionPartidas[$i]["jugador"] == $nombreJugador && $laColeccionPartidas[$i]["palabraWordix"] == $laColeccionPartidas[$numeroPalabra]["palabraWordix"]) {
                     echo "La palabra generada aleatoriamente ya fue utilizada por usted. Generando uno nuevo: ";
                     $numeroPalabra = rand(0,$max);
                     $i = -1;
