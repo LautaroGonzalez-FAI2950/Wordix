@@ -234,11 +234,11 @@ do {
             $nombreJugador = solicitarJugador();
             escribirMensajeBienvenida($nombreJugador);
             echo "¿Con que número de palabra desea jugar?: ";
-            $numeroPalabra = solicitarNumeroEntre(0,count($laColeccionPalabras)-1);
+            $numeroPalabra = solicitarNumeroEntre(1,count($laColeccionPalabras)) - 1;
             for ($i = 0; $i < count($laColeccionPartidas)-1; $i++) {
-                if ($laColeccionPartidas[$numeroPalabra]["palabraWordix"] == $laColeccionPartidas[$i]["palabraWordix"]) {
+                if ($laColeccionPartidas[$i]["jugador"] == $nombreJugador && $laColeccionPartidas[$i]["palabraWordix"] == $laColeccionPartidas[$numeroPalabra]["palabraWordix"]) {
                     echo "La palabra solicitada ya fue utilizada por usted. Ingrese otro número: ";
-                    $numeroPalabra = solicitarNumeroEntre(0,count($laColeccionPalabras)-1);
+                    $numeroPalabra = solicitarNumeroEntre(1,count($laColeccionPalabras)) - 1;
                     $i = -1;
                 }
             }
