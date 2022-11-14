@@ -300,5 +300,20 @@ do {
             echo "\tIntento 5: ",$estadisticasJugador["intento5"],"\n";
             echo "\tIntento 6: ",$estadisticasJugador["intento6"],"\n";
             echo "**************************************\n";
+            break;
+        case 6:
+            break;
+        case 7:
+            echo "Ingrese la palabra que desea agregar (debe ser de 5 letras): ";
+            $palabraAgregada = trim(fgets(STDIN));
+            while(strlen($palabraAgregada!=5)){
+                echo "La palabra debe ser de 5 letras, ingrese otra palabra: ";
+                $palabraAgregada = trim(fgets(STDIN));
+            }
+            $palabrasExistentes = cargarColeccionPalabras();
+            agregarPalabra($palabrasExistentes, $palabraAgregada);
+            echo $palabraAgregada;
+            break;
         }
+
 }while ($opcion != 8); // 12) c)
