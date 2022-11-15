@@ -72,12 +72,12 @@ function agregarPalabra ($coleccionPalabras, $nuevaPalabra) {
 /**
  * Esta funcion devuelve el indice de la primera partida ganada por un jugador en especifico
  * @param string $jugador
+ * @param array $coleccionPartidas
  * @return int
  * COMPLETADO punto 8 Ejercicio 3
  */
-function indicePrimerPartidaGanada($jugador){
-    //int $n, $i, $contador, $indice, Array $coleccionPartidas
-    $coleccionPartidas=cargarPartidas();
+function indicePrimerPartidaGanada($jugador, $coleccionPartidas){
+    //int $n, $i, $contador, $indice
     $n = count($coleccionPartidas); 
     $i=0;
     $indice=-1;
@@ -266,20 +266,20 @@ do {
         
         case 4:
             $nombreJugador = solicitarJugador();
-            $elIndice = indicePrimerPartidaGanada($nombreJugador);
+            $elIndice = indicePrimerPartidaGanada($nombreJugador, $laColeccionPartidas);
             if($elIndice == -1){
                 echo "No existe el jugador.";
             }elseif($elIndice == -2){
                 echo "El jugador ",$nombreJugador," no ganó ninguna partida";
             }else{
-                $historialPartidas = cargarPartidas();
                 echo "******************************************\n";
-                echo "Partida Wordix ",$elIndice+1,": palabra ",$historialPartidas[$elIndice]["palabraWordix"],"\n";
+                echo "Partida Wordix ",$elIndice+1,": palabra ",$laColeccionPartidas[$elIndice]["palabraWordix"],"\n";
                 echo "Jugador: ",$nombreJugador,"\n";
-                echo "Puntaje: ",$historialPartidas[$elIndice]["puntaje"],"\n";
-                echo "Intento: Adivinó la palabra en ",$historialPartidas[$elIndice]["intentos"]," intentos\n";
+                echo "Puntaje: ",$laColeccionPartidas[$elIndice]["puntaje"],"\n";
+                echo "Intento: Adivinó la palabra en ",$laColeccionPartidas[$elIndice]["intentos"]," intentos\n";
                 echo "******************************************\n";
             }
+            sleep(5);
             break;
 
         case 5:
