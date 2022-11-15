@@ -212,11 +212,11 @@ function seleccionarOpcion(){
 /**************************************/
 //Declaración de variables:
 // STRING $nombreJugador
-// INT $numeroPalabra, $i
+// INT $numeroPalabra, $i,$jugoConPalabra
 // ARRAY $laColeccionPalabras, $laColeccionPartidas, $partida
+// BOOLEAN $completado
 //Inicialización de variables:
-
-
+$jugoConPalabra=0;
 //Proceso:
 $laColeccionPartidas = cargarPartidas(); // 12) a)
 $laColeccionPalabras = cargarColeccionPalabras(); // 12) b)
@@ -241,16 +241,24 @@ do {
             break;
         case 2: 
             $nombreJugador=solicitarJugador();
-            $numeroPalabra=rand(0, count($laColeccionPalabras)-1);
-            for ($i = 0; $i < count($laColeccionPartidas)-1; $i++) {
+            $numeroPalabra=rand(0, count($laColeccionPalabras));
+            $completado=false;
+            for ($i = 0; $i < count($laColeccionPartidas) && !$completado; $i++) {
                 if ($laColeccionPartidas[$i]["jugador"] == $nombreJugador && $laColeccionPartidas[$i]["palabraWordix"] == $laColeccionPalabras[$numeroPalabra]) {
-                    echo "La palabra generada aleatoriamente ya fue utilizada por usted. Generando uno nuevo: ";
+                    //echo "La palabra generada aleatoriamente ya fue utilizada por usted. Generando uno nuevo: ";
                     $numeroPalabra = rand(0,count($laColeccionPalabras)-1);
                     $i = -1;
+                    $jugoConPalabra++;
+                }
+                if ($jugoConPalabra>count($laColeccionPalabras)){
+                    echo "Ya ha jugado con todas las palabras integradas del juego. Puede agregar mas con la funcion 'Agregar palabra'\n";
+                    $completado= true;
                 }
             }
-            $partida = jugarWordix($laColeccionPalabras[$numeroPalabra], $nombreJugador);
-            $laColeccionPartidas[count($laColeccionPartidas)]=$partida;
+            if(!$completado){
+                $partida = jugarWordix($laColeccionPalabras[$numeroPalabra], $nombreJugador);
+                $laColeccionPartidas[count($laColeccionPartidas)]=$partida;
+            }
             break;
         case 3: 
             echo "Ingrese un número de partida para mostrar (Entre 1 y ". count($laColeccionPartidas). "): ";
