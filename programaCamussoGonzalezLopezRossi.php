@@ -17,30 +17,29 @@ Rossi Julia - FAI-2378 - Carrera: TUDW - Mail: julia.rossi@est.fi.uncoma.edu.ar 
 
 /**
  * Obtiene una colección de palabras
- * @return array
- * (Completado punto 1 explicación 3)
+ * @return ARRAY
  */
+//(Explicación 3 punto 1)
 function cargarColeccionPalabras()
 {
-    // array $coleccionPalabras
+    // ARRAY $coleccionPalabras
     $coleccionPalabras = [
         "MUJER", "QUESO", "FUEGO", "CASAS", "RASGO",
         "GATOS", "GOTAS", "HUEVO", "TINTO", "NAVES",
         "VERDE", "MELON", "YUYOS", "PIANO", "PISOS",
         "ABRAN", "RATON", "PASOS", "LOSAS", "FECHA"
-        //COMPLETADO
     ];
 
     return ($coleccionPalabras);
 }
 /**
  * Obtiene una colección de partidas
- * @return array
- * (Completado punto 2 explicación 3)
+ * @return ARRAY
  */
+//(Explicación 3 punto 2)
 function cargarPartidas()
 {
-    // array $coleccionPartidas
+    // ARRAY $coleccionPartidas
     $coleccionPartidas = [];
     $coleccionPartidas [0]= ["palabraWordix" => "QUESO","jugador" => "majo","intentos" => 0,"puntaje" => 0];
     $coleccionPartidas [1]= ["palabraWordix" => "CASAS","jugador" => "rudolf","intentos" => 3,"puntaje" => 14];
@@ -53,31 +52,30 @@ function cargarPartidas()
     $coleccionPartidas [8]= ["palabraWordix" => "RATON","jugador" => "majo","intentos" => 5,"puntaje" => 13];
     $coleccionPartidas [9]= ["palabraWordix" => "GATOS","jugador" => "majo","intentos" => 2,"puntaje" => 15];
     $coleccionPartidas [10]= ["palabraWordix" => "NAVES","jugador" => "buzzlightyear","intentos" => 1,"puntaje" => 17];
-    //COMPLETADO
     return ($coleccionPartidas);
 }
 
-/** 
- * Esta función recibe la colección de palabras y una nueva palabra para retornar la colección de palabras con la nueva palabra.
- * @param array $coleccionPalabras
- * @param array $nuevaPalabra
- * @return array
- * (Completado punto 7 explicación 3)
+/** Esta función recibe la colección de palabras y una nueva palabra para retornar la colección de palabras con la nueva palabra.
+ * @param ARRAY $coleccionPalabras
+ * @param ARRAY $nuevaPalabra
+ * @return ARRAY
  */
+//(Explicación 3 punto 7)
 function agregarPalabra ($coleccionPalabras, $nuevaPalabra) {
-    // A coleccionPalabras se le añade la nuevaPalabra en el indice de su longitud(ya que la longitud siempre es mas grande que el índice)
+    /* A $coleccionPalabras se le añade la $nuevaPalabra en el índice de su longitud(ya que la longitud siempre
+    es mas grande que el índice*/
     $coleccionPalabras[count($coleccionPalabras)] = $nuevaPalabra;
     return $coleccionPalabras;
 }
-/**
- * Esta función devuelve el índice de la primera partida ganada por un jugador en específico
- * @param string $jugador
- * @param array $coleccionPartidas
- * @return int
- * COMPLETADO punto 8 Ejercicio 3
+
+/** Esta función devuelve el índice de la primera partida ganada por un jugador en específico
+ * @param STRING $jugador
+ * @param ARRAY $coleccionPartidas
+ * @return INT
  */
+//(Explicación 3 punto 8)
 function indicePrimerPartidaGanada($jugador, $coleccionPartidas){
-    //int $n, $i, $contador, $indice
+    //INT $n, $i, $contador, $indice
     $n = count($coleccionPartidas); 
     $i=0;
     $indice=-1;
@@ -93,10 +91,11 @@ function indicePrimerPartidaGanada($jugador, $coleccionPartidas){
     }
     return $indice;
 }
+
 /** Esta función solicita al usuario el nombre de un jugador y retorna el nombre en minúsculas
- * @return string
- * (COMPLETADO PUNTO 10 EXPLICACIÓN 3)
+ * @return STRING
  */
+//(Explicación 3 punto 10)
 function solicitarJugador() {
     // STRING $nombre, BOOLEAN $comienzaLetra
     do {
@@ -107,33 +106,35 @@ function solicitarJugador() {
     $nombre = strtolower($nombre);
     return $nombre;
 }
-/**
- * Ingresa un valor y muestra la partida con ese valor
+
+/** Esta función permite ingresar un valor y muestra la partida con ese valor
+ * @param ARRAY $partidas
+ * @param INT $numeroPartida
  */
-//COMPLETADO (PUNTO 6 EXPLICACION 3)
+//COMPLETADO (Explicación 3 punto 6)
 function mostrarPartida($partidas,$numeroPartida){
-    /* Array $arrayAux, INT $maximoPartida, $puntajePartida, $partidaJugada, STRING $jugadorPartida, $palabraPartida */
+    /* ARRAY $arrayAux */
     $arrayAux = $partidas[$numeroPartida];
-    $palabraPartida = $arrayAux["palabraWordix"];
-    $jugadorPartida = $arrayAux["jugador"];
-    $puntajePartida = $arrayAux["puntaje"];
 
     //Mostrar partida
     echo "***************************************************\n";
-    echo "Partida WORDIX ".$numeroPartida + 1 .": palabra ". $palabraPartida. "\n";
-    echo "Jugador: ". $jugadorPartida. "\n";
-    echo "Puntaje: ". $puntajePartida. " puntos \n";
+    echo "Partida WORDIX ".$numeroPartida + 1 .": palabra ". $arrayAux["palabraWordix"]. "\n";
+    echo "Jugador: ". $arrayAux["jugador"]. "\n";
+    echo "Puntaje: ". $arrayAux["puntaje"]. " puntos \n";
     echo "Intento: ". (($arrayAux["intentos"]>0) ? "Adivinó la palabra en ". $arrayAux["intentos"]. " intentos \n" : "No adivinó la palabra \n");
     echo "***************************************************\n";
 }
 
-/** Esta función retorna dada una coleccion de partidas la información de UN jugador
- * @param string $jugador
- * @param array $coleccionPartidas
- * @return array
+/** Esta función retorna dada una colección de partidas la informacion de UN jugador
+ * @param STRING $jugador
+ * @param ARRAY $coleccionPartidas
+ * @return ARRAY
  */
+//(Explicación 3 punto 9)
 function extraerResumenJugador($jugador,$coleccionPartidas) {
-// array $resumenUnJugador, int $n,$i, $contPartidasGanadas, $contPartidasTotales, $puntajeTotalUnJugador, boolean $existe
+    /*ARRAY $resumenUnJugador
+    INT $n, $i, $contPartidasGanadas, $contPartidasTotales, $puntajeTotalUnJugador
+    BOOLEAN $existe*/
     $n = count($coleccionPartidas); 
     $contPartidasGanadas= 0;
     $contPartidasTotales= 0;
@@ -167,9 +168,9 @@ function extraerResumenJugador($jugador,$coleccionPartidas) {
 }
 
 /** Esta función compara una colección de partida y las ordena alfabéticamente según jugador y palabra jugada
- * @param Array $a
- * @param Array $b
- * @return Int
+ * @param ARRAY $a
+ * @param ARRAY $b
+ * @return INT
  */
 function comparacion($a,$b){
     if ($a["palabraWordix"]==$b["palabraWordix"]){
@@ -177,9 +178,11 @@ function comparacion($a,$b){
     }
     return (($a["jugador"]<$b["jugador"]) ? -1 : 1);
 }
+
 /** Muestra la colección de partidas total
- * @param array $coleccionPartidas
+ * @param ARRAY $coleccionPartidas
  */
+//(Explicación 3 punto 11)
 function mostrarColeccionPartida($coleccionPartidas){
     uasort($coleccionPartidas, 'comparacion');
     print_r($coleccionPartidas);
@@ -188,11 +191,11 @@ function mostrarColeccionPartida($coleccionPartidas){
 /**
  * Esta función muestra el menú de wordix y comprueba si la opción seleccionada por el usuario
  * esta dentro del rango de opciones
- * @return Int
- * (Completado punto 3 explicación 3)
+ * @return INT
  */
+//(Explicación 3 punto 3)
 function seleccionarOpcion(){
-    /*INT $numeroOpcion, $minimoOpcion, $maximoOpcion */
+    /* INT $numeroOpcion */
     //Muestra el menu
     echo "Menu de opciones:\n";
     echo "\t1) Jugar al Wordix con una palabra elegida\n";
@@ -207,12 +210,13 @@ function seleccionarOpcion(){
     $numeroOpcion = solicitarNumeroEntre(1,8);
     return ($numeroOpcion);       
 }
+
 /**************************************/
 /*********** PROGRAMA PRINCIPAL *******/
 /**************************************/
 //Declaración de variables:
 // STRING $nombreJugador
-// INT $numeroPalabra, $i,$jugoConPalabra
+// INT $numeroPalabra, $i,$jugoConPalabra, $opciones
 // ARRAY $laColeccionPalabras, $laColeccionPartidas, $partida
 // BOOLEAN $completado
 //Inicialización de variables:
@@ -223,6 +227,9 @@ $laColeccionPalabras = cargarColeccionPalabras(); // 12) b)
 
 do {
     $opcion = seleccionarOpcion();
+    /* Usamos un switch para una estructura de control especificada, en este caso solo tenemos 8 opciones a elegir, por lo cual
+    el switch es una mejor opción antes que usar un if y consultar si el valor ingresado es 1,2,3...8*/
+    //(Explicación 3, punto 12-e)
     switch ($opcion) {
         case 1: 
             $cantidadPartidas = count($laColeccionPartidas);
@@ -264,7 +271,7 @@ do {
             echo "Ingrese un número de partida para mostrar (Entre 1 y ". count($laColeccionPartidas). "): ";
             $partidaJugada = solicitarNumeroEntre(1, count($laColeccionPartidas))-1; //Guarda un valor como índice
             mostrarPartida($laColeccionPartidas,$partidaJugada);
-            sleep(5);
+            sleep(3);
             break;
         case 4:
             $nombreJugador = solicitarJugador();
@@ -307,4 +314,4 @@ do {
             break;
         }
 
-}while ($opcion != 8); // 12) c)
+}while ($opcion != 8); // Explicación 3 punto 12-c

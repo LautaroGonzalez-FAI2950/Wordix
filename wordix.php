@@ -31,9 +31,8 @@ const ESTADO_LETRA_PERTENECE = "pertenece";
  * @param Int $min
  * @param Int $max
  * @return Int
- * (Completado punto 5 explicación 3)
  */
-// COMPLETADO
+//(Explicación 3 punto 5)
 function solicitarNumeroEntre($min, $max)
 {
     //int $numero
@@ -155,9 +154,8 @@ function esPalabra($cadena)
  * Consulta si la palabra tiene 5 caracteres y si está compuesta de únicamente letras si no, hay que igresar
  * Una nueva palabra.
  * @return STRING
- * (Completado punto 4 explicacion 3)
  */
-//COMPLETADO
+//(Explicación 3 punto 4)
 function leerPalabra5Letras()
 {
     //string $palabra
@@ -399,11 +397,11 @@ function jugarWordix($palabraWordix, $nombreUsuario)
     if ($ganoElIntento) {
         $nroIntento--;
         $puntaje = obtenerPuntajeWordix($nroIntento, $palabraIntento);
-        echo "Adivinó la palabra Wordix en el intento " . $nroIntento . "!: " . $palabraIntento . " Obtuvo $puntaje puntos!";
+        echo "Adivinó la palabra Wordix en el intento " . $nroIntento . "!: " . $palabraIntento . " Obtuvo $puntaje puntos!\n";
     } else {
         $nroIntento = 0; //reset intento
         $puntaje = 0;
-        echo "Seguí Jugando Wordix, la próxima será! ";
+        echo "Seguí Jugando Wordix, la próxima será! \n";
     }
 
     $partida = [
