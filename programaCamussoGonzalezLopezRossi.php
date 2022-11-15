@@ -34,7 +34,7 @@ function cargarColeccionPalabras()
     return ($coleccionPalabras);
 }
 /**
- * Obtiene una coleccion de partidas
+ * Obtiene una colección de partidas
  * @return array
  * (Completado punto 2 explicación 3)
  */
@@ -70,7 +70,7 @@ function agregarPalabra ($coleccionPalabras, $nuevaPalabra) {
     return $coleccionPalabras;
 }
 /**
- * Esta funcion devuelve el indice de la primera partida ganada por un jugador en especifico
+ * Esta función devuelve el índice de la primera partida ganada por un jugador en específico
  * @param string $jugador
  * @param array $coleccionPartidas
  * @return int
@@ -127,26 +127,24 @@ function mostrarPartida($partidas,$numeroPartida){
     echo "***************************************************\n";
 }
 
-/** Esta funcion retorna dada una coleccion de partidas la informacion de UN jugador
+/** Esta función retorna dada una coleccion de partidas la información de UN jugador
  * @param string $jugador
  * @param array $coleccionPartidas
  * @return array
  */
 function extraerResumenJugador($jugador,$coleccionPartidas) {
-// array $resumenUnJugador int $n,$i, $contPartidasGanadas, $contPartidasTotales, $puntajeTotalUnJugador, boolean $existe
+// array $resumenUnJugador, int $n,$i, $contPartidasGanadas, $contPartidasTotales, $puntajeTotalUnJugador, boolean $existe
     $n = count($coleccionPartidas); 
     $contPartidasGanadas= 0;
     $contPartidasTotales= 0;
     $puntajeTotalUnJugador=0;
     $resumenUnJugador=["jugador"=> "","cantidadPartidas"=> 0, "puntajeTotal"=>0, "victorias"=>0, "intento1"=>0, "intento2"=>0, "intento3"=>0, "intento4"=>0,"intento5"=>0,"intento6"=>0];
     $existe= false;
-
     for ($i=0; $i<$n; $i++){
         if ($jugador==$coleccionPartidas[$i]["jugador"]){
             $resumenUnJugador["jugador"]= $coleccionPartidas[$i]["jugador"];
             $puntajeTotalUnJugador += $coleccionPartidas[$i]["puntaje"];
             $existe = true;
-            
             switch ($coleccionPartidas[$i]["intentos"]) {
                 case 1: $resumenUnJugador["intento1"]+= 1;$contPartidasGanadas++;; break;
                 case 2: $resumenUnJugador["intento2"]+= 1;$contPartidasGanadas++;break;
@@ -156,11 +154,10 @@ function extraerResumenJugador($jugador,$coleccionPartidas) {
                 case 6: $resumenUnJugador["intento6"]+= 1;$contPartidasGanadas++; break;
                 }
                 $contPartidasTotales++;
-        }
-        elseif($i+1==$n && !$existe){
-        echo "El jugador ingresado no existe en la coleccion de partidas, ingrese uno nuevamente: ";
-        $jugador= trim(fgets(STDIN));
-        $i=-1;
+        } elseif($i+1==$n && !$existe) {
+            echo "El jugador ingresado no existe en la colección de partidas, ingrese uno nuevamente: ";
+            $jugador= trim(fgets(STDIN));
+            $i=-1;
         }
     }
     $resumenUnJugador["cantidadPartidas"]= $contPartidasTotales;
@@ -169,7 +166,7 @@ function extraerResumenJugador($jugador,$coleccionPartidas) {
     return $resumenUnJugador;
 }
 
-/** Esta función compara una coleccion de partida y las ordena alfabéticamente según jugador y palabra jugada
+/** Esta función compara una colección de partida y las ordena alfabéticamente según jugador y palabra jugada
  * @param Array $a
  * @param Array $b
  * @return Int
@@ -189,7 +186,7 @@ function mostrarColeccionPartida($coleccionPartidas){
 }
 
 /**
- * Esta funcion muestra el menu de wordix y compruba si la opcion seleccionada por el usuario
+ * Esta función muestra el menú de wordix y comprueba si la opción seleccionada por el usuario
  * esta dentro del rango de opciones
  * @return Int
  * (Completado punto 3 explicación 3)
@@ -244,7 +241,6 @@ do {
             break;
         case 2: 
             $nombreJugador=solicitarJugador();
-            $laColeccionPalabras=cargarColeccionPalabras();
             $numeroPalabra=rand(0, count($laColeccionPalabras)-1);
             for ($i = 0; $i < count($laColeccionPartidas)-1; $i++) {
                 if ($laColeccionPartidas[$i]["jugador"] == $nombreJugador && $laColeccionPartidas[$i]["palabraWordix"] == $laColeccionPalabras[$numeroPalabra]) {
