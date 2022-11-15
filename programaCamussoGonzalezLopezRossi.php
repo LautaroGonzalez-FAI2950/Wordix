@@ -266,12 +266,7 @@ do {
             }elseif($elIndice == -2){
                 echo "El jugador ",$nombreJugador," no ganó ninguna partida";
             }else{
-                echo "******************************************\n";
-                echo "Partida Wordix ",$elIndice+1,": palabra ",$laColeccionPartidas[$elIndice]["palabraWordix"],"\n";
-                echo "Jugador: ",$nombreJugador,"\n";
-                echo "Puntaje: ",$laColeccionPartidas[$elIndice]["puntaje"],"\n";
-                echo "Intento: Adivinó la palabra en ",$laColeccionPartidas[$elIndice]["intentos"]," intentos\n";
-                echo "******************************************\n";
+                mostrarPartida($laColeccionPartidas,$elIndice);
             }
             sleep(5);
             break;
