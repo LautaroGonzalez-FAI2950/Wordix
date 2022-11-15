@@ -129,11 +129,11 @@ function mostrarPartida($partidas,$numeroPartida){
 
 /** Esta funcion retorna dada una coleccion de partidas la informacion de UN jugador
  * @param string $jugador
+ * @param array $coleccionPartidas
  * @return array
  */
-function extraerResumenJugador($jugador) {
+function extraerResumenJugador($jugador,$coleccionPartidas) {
 // array $resumenUnJugador int $n,$i, $contPartidasGanadas, $contPartidasTotales, $puntajeTotalUnJugador, boolean $existe
-    $coleccionPartidas=cargarPartidas();
     $n = count($coleccionPartidas); 
     $contPartidasGanadas= 0;
     $contPartidasTotales= 0;
@@ -181,11 +181,11 @@ function comparacion($a,$b){
     return (($a["jugador"]<$b["jugador"]) ? -1 : 1);
 }
 /** Muestra la colección de partidas total
+ * @param array $coleccionPartidas
  */
-function mostrarColeccionPartida(){
-    $partidas = cargarPartidas();
-    uasort($partidas, 'comparacion');
-    print_r($partidas);
+function mostrarColeccionPartida($coleccionPartidas){
+    uasort($coleccionPartidas, 'comparacion');
+    print_r($coleccionPartidas);
 }
 
 /**
@@ -284,7 +284,7 @@ do {
 
         case 5:
             $nombreJugador = solicitarJugador();
-            $estadisticasJugador = extraerResumenJugador($nombreJugador);
+            $estadisticasJugador = extraerResumenJugador($nombreJugador,$laColeccionPartidas);
             echo "**************************************\n";
             echo "Jugador: ",$nombreJugador,"\n";
             echo "Partidas: ",$estadisticasJugador["cantidadPartidas"],"\n";
@@ -301,16 +301,11 @@ do {
             echo "**************************************\n";
             break;
         case 6:
+            mostrarColeccionPartida($laColeccionPartidas);
             break;
         case 7:
-            echo "Ingrese la palabra que desea agregar (debe ser de 5 letras): ";
-            $palabraAgregada = trim(fgets(STDIN));
-            while(strlen($palabraAgregada)!=5 || !esPalabra($palabraAgregada)){
-                echo "La palabra debe ser de 5 letras, ingrese otra palabra: ";
-                $palabraAgregada = trim(fgets(STDIN));
-            }
-            $palabrasExistentes = cargarColeccionPalabras();
-            agregarPalabra($palabrasExistentes, $palabraAgregada);
+            $palabraAgregada = leerPalabra5Letras();
+            $laColeccionPalabras = agregarPalabra($laColeccionPalabras,$palabraAgregada);
             break;
         }
 
