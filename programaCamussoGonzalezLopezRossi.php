@@ -98,12 +98,12 @@ function indicePrimerPartidaGanada($jugador, $coleccionPartidas){
 //(Explicación 3 punto 10)
 function solicitarJugador() {
     // STRING $nombre, BOOLEAN $comienzaLetra
-    do {
+    do { // Le pide el nombre al jugador hasta que lo que ingrese empieze con una letra
         echo "¿Nombre del jugador? Debe empezar con una letra: ";
         $nombre = trim(fgets(STDIN));
         $comienzaLetra = ctype_alpha($nombre[0]);
     } while (!$comienzaLetra);
-    $nombre = strtolower($nombre);
+    $nombre = strtolower($nombre); // Pasa el nombre a minúsculas
     return $nombre;
 }
 
@@ -233,6 +233,7 @@ do {
     switch ($opcion) {
         case 1: 
             $cantidadPartidas = count($laColeccionPartidas);
+            $jugoConPalabra = 0;
             $nombreJugador = solicitarJugador();
             echo "¿Con que número de palabra desea jugar?: ";
             $numeroPalabra = solicitarNumeroEntre(1,count($laColeccionPalabras)) - 1;
@@ -241,6 +242,10 @@ do {
                     echo "La palabra solicitada ya fue utilizada por usted. Ingrese otro número: ";
                     $numeroPalabra = solicitarNumeroEntre(1,count($laColeccionPalabras)) - 1;
                     $i = -1;
+                    $jugoConPalabra++;
+                } if ($jugoConPalabra>count($laColeccionPalabras)) {
+                    echo "Ya ha jugado con todas las palabras integradas del juego. Puede agregar mas con la funcion 'Agregar palabra'\n";
+                    $completado= true;
                 }
             }
             $partida = jugarWordix($laColeccionPalabras[$numeroPalabra], $nombreJugador);
@@ -248,11 +253,11 @@ do {
             break;
         case 2: 
             $nombreJugador=solicitarJugador();
+            $jugoConPalabra = 0;
             $numeroPalabra=rand(0, count($laColeccionPalabras));
             $completado=false;
             for ($i = 0; $i < count($laColeccionPartidas) && !$completado; $i++) {
                 if ($laColeccionPartidas[$i]["jugador"] == $nombreJugador && $laColeccionPartidas[$i]["palabraWordix"] == $laColeccionPalabras[$numeroPalabra]) {
-                    //echo "La palabra generada aleatoriamente ya fue utilizada por usted. Generando uno nuevo: ";
                     $numeroPalabra = rand(0,count($laColeccionPalabras)-1);
                     $i = -1;
                     $jugoConPalabra++;

@@ -27,7 +27,7 @@ const ESTADO_LETRA_PERTENECE = "pertenece";
 /**************************************/
 
 /** 
- * Esta funcion solicita un numero y comprueba que este entre los 2 valores de entrada
+ * Esta función solicita un numero y comprueba que este entre los 2 valores de entrada
  * @param Int $min
  * @param Int $max
  * @return Int
@@ -159,14 +159,13 @@ function esPalabra($cadena)
 function leerPalabra5Letras()
 {
     //string $palabra
-    echo "Ingrese una palabra de 5 letras: ";
+    echo "Ingrese una palabra de 5 letras: "; //Pide una palabra de 5 letras
     $palabra = trim(fgets(STDIN));
-    $palabra  = strtoupper($palabra);
-
-    while ((strlen($palabra) != 5) || !esPalabra($palabra)) {
+    while ((strlen($palabra) != 5) || !esPalabra($palabra)) { //En caso de que la palabra no sea de 5 letras, pide otra hasta que sea de 5 letras
         echo "Debe ingresar una palabra de 5 letras: ";
-        $palabra = strtoupper(trim(fgets(STDIN)));
+        $palabra = trim(fgets(STDIN));
     }
+    $palabra  = strtoupper($palabra); // Pasa la palabra a mayúsculas
     return $palabra;
 }
 
