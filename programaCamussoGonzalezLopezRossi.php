@@ -16,7 +16,7 @@ Rossi Julia - FAI-2378 - Carrera: TUDW - Mail: julia.rossi@est.fi.uncoma.edu.ar 
 /**************************************/
 
 /**
- * Obtiene una colección de palabras
+ * Carga y retorna una colección de 20 palabras ya definidas que se utilizara en el juego
  * @return ARRAY
  */
 //(Explicación 3 punto 1)
@@ -33,7 +33,7 @@ function cargarColeccionPalabras()
     return ($coleccionPalabras);
 }
 /**
- * Obtiene una colección de partidas
+ * Carga y retorna una colección de partidas de ejemplo, con la palabra jugada, el jugador que la jugo, en el intento en que adivino o no y finalmente el puntaje obtenido
  * @return ARRAY
  */
 //(Explicación 3 punto 2)
@@ -55,36 +55,38 @@ function cargarPartidas()
     return ($coleccionPartidas);
 }
 
-/** Esta función recibe la colección de palabras y una nueva palabra para retornar la colección de palabras con la nueva palabra.
+/** Esta función recibe la colección de palabras y una palabra nueva ingresada por el jugador en el programa pincipal,
+ * y retorna la colección de palabras con la palabra agregada.
  * @param ARRAY $coleccionPalabras
  * @param ARRAY $nuevaPalabra
  * @return ARRAY
  */
 //(Explicación 3 punto 7)
 function agregarPalabra ($coleccionPalabras, $nuevaPalabra) {
-    /* A $coleccionPalabras se le añade la $nuevaPalabra en el índice de su longitud(ya que la longitud siempre
-    es mas grande que el índice*/
+    /* A $coleccionPalabras se le añade la $nuevaPalabra en el índice de su longitud (ya que la longitud siempre
+    es uno mas grande que el último índice). */
     $coleccionPalabras[count($coleccionPalabras)] = $nuevaPalabra;
     return $coleccionPalabras;
 }
 
-/** Esta función devuelve el índice de la primera partida ganada por un jugador en específico
+/** Esta función devuelve el índice de la primera partida ganada por un jugador determinado por el usuario en el programa principal.
  * @param STRING $jugador
  * @param ARRAY $coleccionPartidas
  * @return INT
  */
 //(Explicación 3 punto 8)
 function indicePrimerPartidaGanada($jugador, $coleccionPartidas){
-    //INT $n, $i, $contador, $indice
+    //INT $n, $i, $indice
     $n = count($coleccionPartidas); 
     $i=0;
-    $indice=-1;
+    $indice=-1; // Inicia en -1 para poder comparar, y cuando el jugador no esta registrado devuelve este valor
     while ($i<$n && $i!=$indice){
         if ($jugador==$coleccionPartidas[$i]["jugador"] && $coleccionPartidas[$i]["puntaje"]>0 ){
         $indice=$i;
         }elseif($jugador==$coleccionPartidas[$i]["jugador"] && $coleccionPartidas[$i]["puntaje"]==0){
             $indice = -2;
             $i++;
+            // Devuelve -2 cuando el jugador jugó pero no ganó
         }else{
             $i++;
         }
@@ -92,7 +94,7 @@ function indicePrimerPartidaGanada($jugador, $coleccionPartidas){
     return $indice;
 }
 
-/** Esta función solicita al usuario el nombre de un jugador y retorna el nombre en minúsculas
+/** Esta función solicita el nombre del jugador y retorna su nombre en minúsculas.
  * @return STRING
  */
 //(Explicación 3 punto 10)
@@ -107,7 +109,7 @@ function solicitarJugador() {
     return $nombre;
 }
 
-/** Esta función permite ingresar un valor y muestra la partida con ese valor
+/** Esta función recibe un valor y muestra ese número de partida
  * @param ARRAY $partidas
  * @param INT $numeroPartida
  */
@@ -115,8 +117,7 @@ function solicitarJugador() {
 function mostrarPartida($partidas,$numeroPartida){
     /* ARRAY $arrayAux */
     $arrayAux = $partidas[$numeroPartida];
-
-    //Mostrar partida
+    //Muestra la partida
     echo "***************************************************\n";
     echo "Partida WORDIX ".$numeroPartida + 1 .": palabra ". $arrayAux["palabraWordix"]. "\n";
     echo "Jugador: ". $arrayAux["jugador"]. "\n";
@@ -125,7 +126,7 @@ function mostrarPartida($partidas,$numeroPartida){
     echo "***************************************************\n";
 }
 
-/** Esta función retorna dada una colección de partidas la informacion de UN jugador
+/** Esta función dada una colección de partidas y el nombre de un jugador retorna sus estadísticas
  * @param STRING $jugador
  * @param ARRAY $coleccionPartidas
  * @return ARRAY
@@ -135,18 +136,20 @@ function extraerResumenJugador($jugador,$coleccionPartidas) {
     /*ARRAY $resumenUnJugador
     INT $n, $i, $contPartidasGanadas, $contPartidasTotales, $puntajeTotalUnJugador
     BOOLEAN $existe*/
+    //Inicializacion de variables 
     $n = count($coleccionPartidas); 
     $contPartidasGanadas= 0;
     $contPartidasTotales= 0;
     $puntajeTotalUnJugador=0;
     $resumenUnJugador=["jugador"=> "","cantidadPartidas"=> 0, "puntajeTotal"=>0, "victorias"=>0, "intento1"=>0, "intento2"=>0, "intento3"=>0, "intento4"=>0,"intento5"=>0,"intento6"=>0];
     $existe= false;
+    //
     for ($i=0; $i<$n; $i++){
-        if ($jugador==$coleccionPartidas[$i]["jugador"]){
-            $resumenUnJugador["jugador"]= $coleccionPartidas[$i]["jugador"];
-            $puntajeTotalUnJugador += $coleccionPartidas[$i]["puntaje"];
-            $existe = true;
-            switch ($coleccionPartidas[$i]["intentos"]) {
+        if ($jugador==$coleccionPartidas[$i]["jugador"]){ // Comparo en cada iteracion si el jugador es el mismo que el del indice $i de $coleccionPartidas
+            $resumenUnJugador["jugador"] = $coleccionPartidas[$i]["jugador"]; //Guarda el nombre en $resumenUnJugador con clave "jugador"
+            $puntajeTotalUnJugador += $coleccionPartidas[$i]["puntaje"]; // Suma el puntaje en $resumenUnJugador con clave "puntaje"
+            $existe = true;// Se le asigna true porque el jugador fue encontrado, para que no salga por el lado del elseif
+            switch ($coleccionPartidas[$i]["intentos"]) { //Este switch cambia por intento en el que gano y cuenta la cantidad de veces que finaliza en tal intento
                 case 1: $resumenUnJugador["intento1"]+= 1;$contPartidasGanadas++;; break;
                 case 2: $resumenUnJugador["intento2"]+= 1;$contPartidasGanadas++;break;
                 case 3: $resumenUnJugador["intento3"]+= 1;$contPartidasGanadas++;break;
@@ -154,20 +157,21 @@ function extraerResumenJugador($jugador,$coleccionPartidas) {
                 case 5: $resumenUnJugador["intento5"]+= 1;$contPartidasGanadas++; break;
                 case 6: $resumenUnJugador["intento6"]+= 1;$contPartidasGanadas++; break;
                 }
-                $contPartidasTotales++;
-        } elseif($i+1==$n && !$existe) {
+            $contPartidasTotales++;
+        } elseif($i+1==$n && !$existe) { //Posibilidad en el que el jugador no es encontrado, donde se pide que se ingrese otro y reinicia el contador de iteración
             echo "El jugador ingresado no existe en la colección de partidas, ingrese uno nuevamente: ";
             $jugador= trim(fgets(STDIN));
             $i=-1;
         }
     }
+    //Se asigna en $resumenUnJugador los datos calculados
     $resumenUnJugador["cantidadPartidas"]= $contPartidasTotales;
     $resumenUnJugador["victorias"]= $contPartidasGanadas;
     $resumenUnJugador["puntajeTotal"]= $puntajeTotalUnJugador;
     return $resumenUnJugador;
 }
 
-/** Esta función compara una colección de partida y las ordena alfabéticamente según jugador y palabra jugada
+/** Esta función compara una colección de partidas, las ordena alfabéticamente según jugador y palabra jugada
  * @param ARRAY $a
  * @param ARRAY $b
  * @return INT
@@ -179,7 +183,7 @@ function comparacion($a,$b){
     return (($a["jugador"]<$b["jugador"]) ? -1 : 1);
 }
 
-/** Muestra la colección de partidas total
+/** Muestra todas las colección de partidas ordenadas alfabeticamente jugadas
  * @param ARRAY $coleccionPartidas
  */
 //(Explicación 3 punto 11)
@@ -189,14 +193,13 @@ function mostrarColeccionPartida($coleccionPartidas){
 }
 
 /**
- * Esta función muestra el menú de wordix y comprueba si la opción seleccionada por el usuario
- * esta dentro del rango de opciones
+ * Esta función muestra el menú de wordix y comprueba si la opción seleccionada por el usuario esta dentro del rango de opciones
  * @return INT
  */
 //(Explicación 3 punto 3)
 function seleccionarOpcion(){
     /* INT $numeroOpcion */
-    //Muestra el menu
+    //Muestra el menú
     echo "Menu de opciones:\n";
     echo "\t1) Jugar al Wordix con una palabra elegida\n";
     echo "\t2) Jugar al Wordix con una palabra aleatoria\n";
