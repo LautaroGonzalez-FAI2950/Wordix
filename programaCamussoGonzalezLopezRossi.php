@@ -120,7 +120,7 @@ function mostrarPartida($partidas,$numeroPartida){
 
     //Mostrar partida
     echo "***************************************************\n";
-    echo "Partida WORDIX ".$numeroPartida.": palabra ". $palabraPartida. "\n";
+    echo "Partida WORDIX ".$numeroPartida + 1 .": palabra ". $palabraPartida. "\n";
     echo "Jugador: ". $jugadorPartida. "\n";
     echo "Puntaje: ". $puntajePartida. " puntos \n";
     echo "Intento: ". (($arrayAux["intentos"]>0) ? "Adivinó la palabra en ". $arrayAux["intentos"]. " intentos \n" : "No adivinó la palabra \n");
@@ -255,7 +255,6 @@ do {
             }
             $partida = jugarWordix($laColeccionPalabras[$numeroPalabra], $nombreJugador);
             $laColeccionPartidas[count($laColeccionPartidas)]=$partida;
-
             break;
         case 3: 
             echo "Ingrese un número de partida para mostrar (Entre 1 y ". count($laColeccionPartidas). "): ";
@@ -263,7 +262,6 @@ do {
             mostrarPartida($laColeccionPartidas,$partidaJugada);
             sleep(5);
             break;
-        
         case 4:
             $nombreJugador = solicitarJugador();
             $elIndice = indicePrimerPartidaGanada($nombreJugador, $laColeccionPartidas);
@@ -299,6 +297,7 @@ do {
             echo "\tIntento 5: ",$estadisticasJugador["intento5"],"\n";
             echo "\tIntento 6: ",$estadisticasJugador["intento6"],"\n";
             echo "**************************************\n";
+            sleep(5);
             break;
         case 6:
             mostrarColeccionPartida($laColeccionPartidas);
