@@ -138,10 +138,10 @@ function extraerResumenJugador($jugador,$coleccionPartidas) {
     BOOLEAN $existe*/
     //Inicializacion de variables 
     $n = count($coleccionPartidas); 
-    $contPartidasGanadas= 0;
-    $contPartidasTotales= 0;
-    $puntajeTotalUnJugador=0;
-    $resumenUnJugador=["jugador"=> "","cantidadPartidas"=> 0, "puntajeTotal"=>0, "victorias"=>0, "intento1"=>0, "intento2"=>0, "intento3"=>0, "intento4"=>0,"intento5"=>0,"intento6"=>0];
+    $contPartidasGanadas = 0;
+    $contPartidasTotales = 0;
+    $puntajeTotalUnJugador = 0;
+    $resumenUnJugador = ["jugador"=> "","cantidadPartidas"=> 0, "puntajeTotal"=>0, "victorias"=>0, "intento1"=>0, "intento2"=>0, "intento3"=>0, "intento4"=>0,"intento5"=>0,"intento6"=>0];
     $existe= false;
     //
     for ($i=0; $i<$n; $i++){
@@ -150,18 +150,14 @@ function extraerResumenJugador($jugador,$coleccionPartidas) {
             $puntajeTotalUnJugador += $coleccionPartidas[$i]["puntaje"]; // Suma el puntaje en $resumenUnJugador con clave "puntaje"
             $existe = true;// Se le asigna true porque el jugador fue encontrado, para que no salga por el lado del elseif
             switch ($coleccionPartidas[$i]["intentos"]) { //Este switch cambia por intento en el que gano y cuenta la cantidad de veces que finaliza en tal intento
-                case 1: $resumenUnJugador["intento1"]+= 1;$contPartidasGanadas++;; break;
-                case 2: $resumenUnJugador["intento2"]+= 1;$contPartidasGanadas++;break;
-                case 3: $resumenUnJugador["intento3"]+= 1;$contPartidasGanadas++;break;
-                case 4: $resumenUnJugador["intento4"]+= 1;$contPartidasGanadas++;break;
-                case 5: $resumenUnJugador["intento5"]+= 1;$contPartidasGanadas++; break;
-                case 6: $resumenUnJugador["intento6"]+= 1;$contPartidasGanadas++; break;
+                case 1: $resumenUnJugador["intento1"]+= 1; $contPartidasGanadas++; break;
+                case 2: $resumenUnJugador["intento2"]+= 1; $contPartidasGanadas++; break;
+                case 3: $resumenUnJugador["intento3"]+= 1; $contPartidasGanadas++; break;
+                case 4: $resumenUnJugador["intento4"]+= 1; $contPartidasGanadas++; break;
+                case 5: $resumenUnJugador["intento5"]+= 1; $contPartidasGanadas++; break;
+                case 6: $resumenUnJugador["intento6"]+= 1; $contPartidasGanadas++; break;
                 }
             $contPartidasTotales++;
-        } elseif($i+1==$n && !$existe) { //Posibilidad en el que el jugador no es encontrado, donde se pide que se ingrese otro y reinicia el contador de iteración
-            echo "El jugador ingresado no existe en la colección de partidas, ingrese uno nuevamente: ";
-            $jugador= trim(fgets(STDIN));
-            $i=-1;
         }
     }
     //Se asigna en $resumenUnJugador los datos calculados
@@ -219,11 +215,11 @@ function seleccionarOpcion(){
 /**************************************/
 //Declaración de variables:
 // STRING $nombreJugador
-// INT $numeroPalabra, $i,$jugoConPalabra, $opciones
+// INT $numeroPalabra, $i, $opciones, $partidasJugador
 // ARRAY $laColeccionPalabras, $laColeccionPartidas, $partida
 // BOOLEAN $completado
 //Inicialización de variables:
-$jugoConPalabra=0;
+$jugoConPalabra = 0;
 //Proceso:
 $laColeccionPartidas = cargarPartidas(); // 12) a)
 $laColeccionPalabras = cargarColeccionPalabras(); // 12) b)
