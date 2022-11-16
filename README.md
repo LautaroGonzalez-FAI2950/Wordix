@@ -6,7 +6,7 @@ Introducción a la programación
 Tecnicatura Universitaria en Desarrollo Web (TUDW)
 
 # Integrantes:  
-Lautaro Gonzalez FAI-2950 Email: lautaro.gonzalez@est.fi.uncoma.edu.ar Github: Lautaro Gonzalez  
-Rossi Julia - FAI-2378 - Mail: julia.rossi@est.fi.uncoma.edu.ar - Github: JuliaRossiFAI-2378  
-Valentin Camusso FAI-3208 - Email: valentin.camusso@est.fi.uncoma.edu.ar - Github: ValentinCamussoFAI-3208  
-Emiliano Lopez FAI-3357 - e-mail: emiliano.lopez@est.fi.uncoma.edu.ar - Github: EmiMlz
+- **Lautaro Gonzalez** FAI-2950 Email: lautaro.gonzalez@est.fi.uncoma.edu.ar Github: VintuuS2 
+- **Rossi Julia** - FAI-2378 - Mail: julia.rossi@est.fi.uncoma.edu.ar - Github: JuliaRossiFAI-2378  
+- **Valentin Camusso** FAI-3208 - Email: valentin.camusso@est.fi.uncoma.edu.ar - Github: ValentinCamussoFAI-3208  
+- **Emiliano Lopez** FAI-3357 - e-mail: emiliano.lopez@est.fi.uncoma.edu.ar - Github: EmiMlz
