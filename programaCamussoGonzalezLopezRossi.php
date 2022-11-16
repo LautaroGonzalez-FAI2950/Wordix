@@ -231,39 +231,40 @@ do {
     //(Explicación 3, punto 12-e)
     switch ($opcion) {
         case 1: 
-            $cantidadPartidas = count($laColeccionPartidas);
             $jugoConPalabra = 0;
+            $completado = false;
             $nombreJugador = solicitarJugador();
+            $partidasJugador = extraerResumenJugador($nombreJugador, $laColeccionPartidas)["cantidadPartidas"];
             echo "¿Con que número de palabra desea jugar?: ";
             $numeroPalabra = solicitarNumeroEntre(1,count($laColeccionPalabras)) - 1;
-            for ($i = 0; $i < count($laColeccionPartidas); $i++) {
-                if ($laColeccionPartidas[$i]["jugador"] == $nombreJugador && $laColeccionPartidas[$i]["palabraWordix"] == $laColeccionPalabras[$numeroPalabra]) {
+            for ($i = 0; $i < count($laColeccionPartidas) && !$completado; $i++) { 
+                if ($partidasJugador == count($laColeccionPalabras)) { //(Agregado nuestro) Verifica si el jugador ya jugo con todas las palabras posibles asi no corre el programa infinitamente.
+                    echo "Ya ha jugado con todas las palabras integradas del juego. Puede agregar más con la función 'Agregar palabra'\n";
+                    $completado = true;
+                } elseif ($laColeccionPartidas[$i]["jugador"] == $nombreJugador && $laColeccionPartidas[$i]["palabraWordix"] == $laColeccionPalabras[$numeroPalabra]) {
                     echo "La palabra solicitada ya fue utilizada por usted. Ingrese otro número: ";
                     $numeroPalabra = solicitarNumeroEntre(1,count($laColeccionPalabras)) - 1;
                     $i = -1;
-                    $jugoConPalabra++;
-                } if ($jugoConPalabra>count($laColeccionPalabras)) {
-                    echo "Ya ha jugado con todas las palabras integradas del juego. Puede agregar mas con la funcion 'Agregar palabra'\n";
-                    $completado= true;
                 }
             }
-            $partida = jugarWordix($laColeccionPalabras[$numeroPalabra], $nombreJugador);
-            $laColeccionPartidas[count($laColeccionPartidas)] = $partida;
+            if (!$completado) {
+                $partida = jugarWordix($laColeccionPalabras[$numeroPalabra], $nombreJugador);
+                $laColeccionPartidas[count($laColeccionPartidas)] = $partida;
+            }
             break;
         case 2: 
-            $nombreJugador=solicitarJugador();
             $jugoConPalabra = 0;
-            $numeroPalabra=rand(0, count($laColeccionPalabras));
-            $completado=false;
+            $numeroPalabra = rand(0, count($laColeccionPalabras));
+            $completado = false;
+            $nombreJugador = solicitarJugador();
+            $partidasJugador = extraerResumenJugador($nombreJugador, $laColeccionPartidas)["cantidadPartidas"];
             for ($i = 0; $i < count($laColeccionPartidas) && !$completado; $i++) {
-                if ($laColeccionPartidas[$i]["jugador"] == $nombreJugador && $laColeccionPartidas[$i]["palabraWordix"] == $laColeccionPalabras[$numeroPalabra]) {
+                if ($partidasJugador == count($laColeccionPalabras)) { //(Agregado nuestro) Verifica si el jugador ya jugo con todas las palabras posibles asi no corre el programa infinitamente.
+                    echo "Ya ha jugado con todas las palabras integradas del juego. Puede agregar más con la función 'Agregar palabra'\n";
+                    $completado = true;
+                } elseif ($laColeccionPartidas[$i]["jugador"] == $nombreJugador && $laColeccionPartidas[$i]["palabraWordix"] == $laColeccionPalabras[$numeroPalabra]) {
                     $numeroPalabra = rand(0,count($laColeccionPalabras)-1);
                     $i = -1;
-                    $jugoConPalabra++;
-                }
-                if ($jugoConPalabra>count($laColeccionPalabras)){
-                    echo "Ya ha jugado con todas las palabras integradas del juego. Puede agregar mas con la funcion 'Agregar palabra'\n";
-                    $completado= true;
                 }
             }
             if(!$completado){
@@ -280,19 +281,26 @@ do {
         case 4:
             $nombreJugador = solicitarJugador();
             $elIndice = indicePrimerPartidaGanada($nombreJugador, $laColeccionPartidas);
-            if($elIndice == -1){
-                echo "No existe el jugador.";
-            }elseif($elIndice == -2){
-                echo "El jugador ",$nombreJugador," no ganó ninguna partida";
-            }else{
+            while ($elIndice == -1) {
+                echo "Ese jugador no existe, ingrese otro nombre.\n";
+                $nombreJugador = solicitarJugador();
+                $elIndice = indicePrimerPartidaGanada($nombreJugador, $laColeccionPartidas);
+            }
+            if($elIndice == -2){
+                echo "El jugador ",$nombreJugador," no ganó ninguna partida.\n";
+            } elseif ($elIndice >= 0) {
                 mostrarPartida($laColeccionPartidas,$elIndice);
             }
-            sleep(5);
+            sleep(3);
             break;
-
         case 5:
             $nombreJugador = solicitarJugador();
             $estadisticasJugador = extraerResumenJugador($nombreJugador,$laColeccionPartidas);
+            while ($estadisticasJugador["cantidadPartidas"] == 0) {
+                echo "El jugador ingresado no existe en la colección de partidas, ingrese otro.\n";
+                $nombreJugador = solicitarJugador();
+                $estadisticasJugador = extraerResumenJugador($nombreJugador,$laColeccionPartidas);
+            }
             echo "**************************************\n";
             echo "Jugador: ",$nombreJugador,"\n";
             echo "Partidas: ",$estadisticasJugador["cantidadPartidas"],"\n";
@@ -307,7 +315,7 @@ do {
             echo "\tIntento 5: ",$estadisticasJugador["intento5"],"\n";
             echo "\tIntento 6: ",$estadisticasJugador["intento6"],"\n";
             echo "**************************************\n";
-            sleep(5);
+            sleep(4);
             break;
         case 6:
             mostrarColeccionPartida($laColeccionPartidas);
