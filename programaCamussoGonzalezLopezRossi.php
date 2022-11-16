@@ -16,7 +16,7 @@ Rossi Julia - FAI-2378 - Carrera: TUDW - Mail: julia.rossi@est.fi.uncoma.edu.ar 
 /**************************************/
 
 /**
- * Carga y retorna una colección de 20 palabras ya definidas que se utilizara en el juego
+ * Carga y retorna una colección de 20 palabras ya definidas que se utilizará en el juego
  * @return ARRAY
  */
 //(Explicación 3 punto 1)
@@ -33,7 +33,7 @@ function cargarColeccionPalabras()
     return ($coleccionPalabras);
 }
 /**
- * Carga y retorna una colección de partidas de ejemplo, con la palabra jugada, el jugador que la jugo, en el intento en que adivino o no y finalmente el puntaje obtenido
+ * Carga y retorna una colección de partidas de ejemplo, con la palabra jugada, el jugador que la jugó, en el intento en que adivinó o no y finalmente el puntaje obtenido
  * @return ARRAY
  */
 //(Explicación 3 punto 2)
@@ -55,7 +55,7 @@ function cargarPartidas()
     return ($coleccionPartidas);
 }
 
-/** Esta función recibe la colección de palabras y una palabra nueva ingresada por el jugador en el programa pincipal,
+/** Esta función recibe la colección de palabras y una palabra nueva ingresada por el jugador en el programa principal,
  * y retorna la colección de palabras con la palabra agregada.
  * @param ARRAY $coleccionPalabras
  * @param ARRAY $nuevaPalabra
@@ -64,7 +64,7 @@ function cargarPartidas()
 //(Explicación 3 punto 7)
 function agregarPalabra ($coleccionPalabras, $nuevaPalabra) {
     /* A $coleccionPalabras se le añade la $nuevaPalabra en el índice de su longitud (ya que la longitud siempre
-    es uno mas grande que el último índice). */
+    es uno más grande que el último índice). */
     $coleccionPalabras[count($coleccionPalabras)] = $nuevaPalabra;
     return $coleccionPalabras;
 }
@@ -135,13 +135,13 @@ function mostrarPartida($partidas,$numeroPartida){
 function extraerResumenJugador($jugador,$coleccionPartidas) {
     /*ARRAY $resumenUnJugador
     INT $i, $contPartidasGanadas, $contPartidasTotales, $puntajeTotalUnJugador */
-    //Inicializacion de variables 
+    //Inicialización de variables 
     $contPartidasGanadas = 0;
     $contPartidasTotales = 0;
     $puntajeTotalUnJugador = 0;
     $resumenUnJugador = ["jugador"=> "","cantidadPartidas"=> 0, "puntajeTotal"=>0, "victorias"=>0, "intento1"=>0, "intento2"=>0, "intento3"=>0, "intento4"=>0,"intento5"=>0,"intento6"=>0];
     for ($i = 0; $i < count($coleccionPartidas); $i++){
-        if ($jugador == $coleccionPartidas[$i]["jugador"]){ // Comparo en cada iteración si el jugador es el mismo que el del indice $i de $coleccionPartidas
+        if ($jugador == $coleccionPartidas[$i]["jugador"]){ // Comparo en cada iteración si el jugador es el mismo que el del índice $i de $coleccionPartidas
             $resumenUnJugador["jugador"] = $coleccionPartidas[$i]["jugador"]; //Guarda el nombre en $resumenUnJugador con clave "jugador"
             $puntajeTotalUnJugador += $coleccionPartidas[$i]["puntaje"]; // Suma el puntaje en $resumenUnJugador con clave "puntaje"
             switch ($coleccionPartidas[$i]["intentos"]) { //Este switch cambia por intento en el que ganó y cuenta la cantidad de veces que finaliza en tal intento
@@ -220,6 +220,7 @@ $jugoConPalabra = 0;
 //Proceso:
 $laColeccionPartidas = cargarPartidas(); // 12) a)
 $laColeccionPalabras = cargarColeccionPalabras(); // 12) b)
+
 do {
     $opcion = seleccionarOpcion();
     /* Usamos un switch para una estructura de control especificada, en este caso solo tenemos 8 opciones a elegir, por lo cual
@@ -247,6 +248,7 @@ do {
                 $laColeccionPartidas[count($laColeccionPartidas)] = $partida;
             }
             break;
+
         case 2: 
             $numeroPalabra = rand(0, count($laColeccionPalabras));
             $completado = false;
@@ -266,12 +268,14 @@ do {
                 $laColeccionPartidas[count($laColeccionPartidas)]=$partida;
             }
             break;
+
         case 3: 
             echo "Ingrese un número de partida para mostrar (Entre 1 y ". count($laColeccionPartidas). "): ";
             $partidaJugada = solicitarNumeroEntre(1, count($laColeccionPartidas))-1; //Guarda un valor como índice
             mostrarPartida($laColeccionPartidas,$partidaJugada);
             sleep(3);
             break;
+
         case 4:
             $nombreJugador = solicitarJugador();
             $elIndice = indicePrimerPartidaGanada($nombreJugador, $laColeccionPartidas);
@@ -287,6 +291,7 @@ do {
             }
             sleep(3);
             break;
+
         case 5:
             $nombreJugador = solicitarJugador();
             $estadisticasJugador = extraerResumenJugador($nombreJugador, $laColeccionPartidas);
@@ -311,9 +316,11 @@ do {
             echo "**************************************\n";
             sleep(4);
             break;
+
         case 6:
             mostrarColeccionPartida($laColeccionPartidas);
             break;
+            
         case 7:
             $palabraAgregada = leerPalabra5Letras();
             $laColeccionPalabras = agregarPalabra($laColeccionPalabras,$palabraAgregada);
