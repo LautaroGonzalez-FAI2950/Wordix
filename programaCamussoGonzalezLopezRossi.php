@@ -134,22 +134,17 @@ function mostrarPartida($partidas,$numeroPartida){
 //(Explicación 3 punto 9)
 function extraerResumenJugador($jugador,$coleccionPartidas) {
     /*ARRAY $resumenUnJugador
-    INT $n, $i, $contPartidasGanadas, $contPartidasTotales, $puntajeTotalUnJugador
-    BOOLEAN $existe*/
+    INT $i, $contPartidasGanadas, $contPartidasTotales, $puntajeTotalUnJugador */
     //Inicializacion de variables 
-    $n = count($coleccionPartidas); 
     $contPartidasGanadas = 0;
     $contPartidasTotales = 0;
     $puntajeTotalUnJugador = 0;
     $resumenUnJugador = ["jugador"=> "","cantidadPartidas"=> 0, "puntajeTotal"=>0, "victorias"=>0, "intento1"=>0, "intento2"=>0, "intento3"=>0, "intento4"=>0,"intento5"=>0,"intento6"=>0];
-    $existe= false;
-    //
-    for ($i=0; $i<$n; $i++){
-        if ($jugador==$coleccionPartidas[$i]["jugador"]){ // Comparo en cada iteracion si el jugador es el mismo que el del indice $i de $coleccionPartidas
+    for ($i = 0; $i < count($coleccionPartidas); $i++){
+        if ($jugador == $coleccionPartidas[$i]["jugador"]){ // Comparo en cada iteración si el jugador es el mismo que el del indice $i de $coleccionPartidas
             $resumenUnJugador["jugador"] = $coleccionPartidas[$i]["jugador"]; //Guarda el nombre en $resumenUnJugador con clave "jugador"
             $puntajeTotalUnJugador += $coleccionPartidas[$i]["puntaje"]; // Suma el puntaje en $resumenUnJugador con clave "puntaje"
-            $existe = true;// Se le asigna true porque el jugador fue encontrado, para que no salga por el lado del elseif
-            switch ($coleccionPartidas[$i]["intentos"]) { //Este switch cambia por intento en el que gano y cuenta la cantidad de veces que finaliza en tal intento
+            switch ($coleccionPartidas[$i]["intentos"]) { //Este switch cambia por intento en el que ganó y cuenta la cantidad de veces que finaliza en tal intento
                 case 1: $resumenUnJugador["intento1"]+= 1; $contPartidasGanadas++; break;
                 case 2: $resumenUnJugador["intento2"]+= 1; $contPartidasGanadas++; break;
                 case 3: $resumenUnJugador["intento3"]+= 1; $contPartidasGanadas++; break;
@@ -168,18 +163,18 @@ function extraerResumenJugador($jugador,$coleccionPartidas) {
 }
 
 /** Esta función compara una colección de partidas, las ordena alfabéticamente según jugador y palabra jugada
- * @param ARRAY $a
- * @param ARRAY $b
+ * @param ARRAY $arrayComparativo1
+ * @param ARRAY $arrayComparativo2
  * @return INT
  */
-function comparacion($a,$b){
-    if ($a["palabraWordix"]==$b["palabraWordix"]){
+function comparacion ($arrayComparativo1, $arrayComparativo2){
+    if ($arrayComparativo1["palabraWordix"] == $arrayComparativo2["palabraWordix"]){
         return 0;
     }
-    return (($a["jugador"]<$b["jugador"]) ? -1 : 1);
+    return (($arrayComparativo1["jugador"] < $arrayComparativo2["jugador"]) ? -1 : 1);
 }
 
-/** Muestra todas las colección de partidas ordenadas alfabeticamente jugadas
+/** Muestra toda la colección de partidas jugadas ordenadas alfabéticamente.
  * @param ARRAY $coleccionPartidas
  */
 //(Explicación 3 punto 11)
@@ -188,8 +183,7 @@ function mostrarColeccionPartida($coleccionPartidas){
     print_r($coleccionPartidas);
 }
 
-/**
- * Esta función muestra el menú de wordix y comprueba si la opción seleccionada por el usuario esta dentro del rango de opciones
+/** Esta función muestra el menú de Wordix y comprueba si la opción seleccionada por el usuario esta dentro del rango de opciones
  * @return INT
  */
 //(Explicación 3 punto 3)
@@ -213,25 +207,26 @@ function seleccionarOpcion(){
 /**************************************/
 /*********** PROGRAMA PRINCIPAL *******/
 /**************************************/
-//Declaración de variables:
-// STRING $nombreJugador
-// INT $numeroPalabra, $i, $opciones, $partidasJugador
-// ARRAY $laColeccionPalabras, $laColeccionPartidas, $partida
+
+// Declaración de variables:
+// STRING $nombreJugador, $palabraAgregada
+// INT $numeroPalabra, $i, $opcion, $partidasJugador, $elIndice
+// ARRAY $laColeccionPalabras, $laColeccionPartidas, $partida, $estadisticasJugador
 // BOOLEAN $completado
+
 //Inicialización de variables:
 $jugoConPalabra = 0;
+
 //Proceso:
 $laColeccionPartidas = cargarPartidas(); // 12) a)
 $laColeccionPalabras = cargarColeccionPalabras(); // 12) b)
-
 do {
     $opcion = seleccionarOpcion();
     /* Usamos un switch para una estructura de control especificada, en este caso solo tenemos 8 opciones a elegir, por lo cual
     el switch es una mejor opción antes que usar un if y consultar si el valor ingresado es 1,2,3...8*/
     //(Explicación 3, punto 12-e)
     switch ($opcion) {
-        case 1: 
-            $jugoConPalabra = 0;
+        case 1:
             $completado = false;
             $nombreJugador = solicitarJugador();
             $partidasJugador = extraerResumenJugador($nombreJugador, $laColeccionPartidas)["cantidadPartidas"];
@@ -253,7 +248,6 @@ do {
             }
             break;
         case 2: 
-            $jugoConPalabra = 0;
             $numeroPalabra = rand(0, count($laColeccionPalabras));
             $completado = false;
             $nombreJugador = solicitarJugador();
@@ -289,17 +283,17 @@ do {
             if($elIndice == -2){
                 echo "El jugador ",$nombreJugador," no ganó ninguna partida.\n";
             } elseif ($elIndice >= 0) {
-                mostrarPartida($laColeccionPartidas,$elIndice);
+                mostrarPartida($laColeccionPartidas, $elIndice);
             }
             sleep(3);
             break;
         case 5:
             $nombreJugador = solicitarJugador();
-            $estadisticasJugador = extraerResumenJugador($nombreJugador,$laColeccionPartidas);
+            $estadisticasJugador = extraerResumenJugador($nombreJugador, $laColeccionPartidas);
             while ($estadisticasJugador["cantidadPartidas"] == 0) {
                 echo "El jugador ingresado no existe en la colección de partidas, ingrese otro.\n";
                 $nombreJugador = solicitarJugador();
-                $estadisticasJugador = extraerResumenJugador($nombreJugador,$laColeccionPartidas);
+                $estadisticasJugador = extraerResumenJugador($nombreJugador, $laColeccionPartidas);
             }
             echo "**************************************\n";
             echo "Jugador: ",$nombreJugador,"\n";
@@ -325,5 +319,4 @@ do {
             $laColeccionPalabras = agregarPalabra($laColeccionPalabras,$palabraAgregada);
             break;
         }
-
 }while ($opcion != 8); // Explicación 3 punto 12-c
