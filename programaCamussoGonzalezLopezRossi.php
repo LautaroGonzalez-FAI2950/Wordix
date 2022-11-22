@@ -233,7 +233,8 @@ do {
             $partidasJugador = extraerResumenJugador($nombreJugador, $laColeccionPartidas)["cantidadPartidas"];
             echo "¿Con que número de palabra desea jugar?: ";
             $numeroPalabra = solicitarNumeroEntre(1,count($laColeccionPalabras)) - 1;
-            for ($i = 0; $i < count($laColeccionPartidas) && !$completado; $i++) { 
+            $i=0;
+            while ($i < count($laColeccionPartidas) && !$completado) {
                 if ($partidasJugador == count($laColeccionPalabras)) { //(Agregado nuestro) Verifica si el jugador ya jugo con todas las palabras posibles asi no corre el programa infinitamente.
                     echo "Ya ha jugado con todas las palabras integradas del juego. Puede agregar más con la función 'Agregar palabra'\n";
                     $completado = true;
@@ -242,6 +243,7 @@ do {
                     $numeroPalabra = solicitarNumeroEntre(1,count($laColeccionPalabras)) - 1;
                     $i = -1;
                 }
+                $i++;
             }
             if (!$completado) {
                 $partida = jugarWordix($laColeccionPalabras[$numeroPalabra], $nombreJugador);
@@ -254,7 +256,8 @@ do {
             $completado = false;
             $nombreJugador = solicitarJugador();
             $partidasJugador = extraerResumenJugador($nombreJugador, $laColeccionPartidas)["cantidadPartidas"];
-            for ($i = 0; $i < count($laColeccionPartidas) && !$completado; $i++) {
+            $i=0;
+            while ($i < count($laColeccionPartidas) && !$completado){
                 if ($partidasJugador == count($laColeccionPalabras)) { //(Agregado nuestro) Verifica si el jugador ya jugo con todas las palabras posibles asi no corre el programa infinitamente.
                     echo "Ya ha jugado con todas las palabras integradas del juego. Puede agregar más con la función 'Agregar palabra'\n";
                     $completado = true;
@@ -262,13 +265,16 @@ do {
                     $numeroPalabra = rand(0,count($laColeccionPalabras)-1);
                     $i = -1;
                 }
+                $i++;
             }
+
             if(!$completado){
                 $partida = jugarWordix($laColeccionPalabras[$numeroPalabra], $nombreJugador);
                 $laColeccionPartidas[count($laColeccionPartidas)]=$partida;
             }
             break;
-
+            
+            
         case 3: 
             echo "Ingrese un número de partida para mostrar (Entre 1 y ". count($laColeccionPartidas). "): ";
             $partidaJugada = solicitarNumeroEntre(1, count($laColeccionPartidas))-1; //Guarda un valor como índice
