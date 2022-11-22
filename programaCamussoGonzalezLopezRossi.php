@@ -218,9 +218,6 @@ function seleccionarOpcion(){
 // ARRAY $laColeccionPalabras, $laColeccionPartidas, $partida, $estadisticasJugador
 // BOOLEAN $completado
 
-//Inicialización de variables:
-$jugoConPalabra = 0;
-
 //Proceso:
 $laColeccionPartidas = cargarPartidas(); // 12) a)
 $laColeccionPalabras = cargarColeccionPalabras(); // 12) b)
