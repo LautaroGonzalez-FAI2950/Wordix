@@ -168,10 +168,14 @@ function extraerResumenJugador($jugador,$coleccionPartidas) {
  * @return INT
  */
 function comparacion ($arrayComparativo1, $arrayComparativo2){
+    // INT $num
+    $num = 1; // Lo inicializo en 1 para que si no pasa por ningún 'if' devuelva 1.
     if ($arrayComparativo1["palabraWordix"] == $arrayComparativo2["palabraWordix"]){
-        return 0;
+        $num = 0;
+    } elseif (($arrayComparativo1["jugador"] < $arrayComparativo2["jugador"])) {
+        $num = -1;
     }
-    return (($arrayComparativo1["jugador"] < $arrayComparativo2["jugador"]) ? -1 : 1);
+    return $num;
 }
 
 /** Muestra toda la colección de partidas jugadas ordenadas alfabéticamente.
