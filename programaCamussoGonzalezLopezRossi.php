@@ -330,7 +330,21 @@ do {
             
         case 7:
             $palabraAgregada = leerPalabra5Letras();
-            $laColeccionPalabras = agregarPalabra($laColeccionPalabras,$palabraAgregada);
+            $palabraValida = true;
+            $i = 0;
+            $palabrasTotales = count($laColeccionPalabras);
+            while ($i<$palabrasTotales && $palabraValida){
+                if ($palabraAgregada == $laColeccionPalabras[$i]){
+                    $palabraValida = false;
+                    echo "La palabra ya se encuentra en el juego.\n";
+                }
+                else{
+                    $i++;
+                }
+            }
+            if ($palabraValida){
+                $laColeccionPalabras = agregarPalabra($laColeccionPalabras,$palabraAgregada);
+            }            
             break;
         }
 }while ($opcion != 8); // Explicación 3 punto 12-c
