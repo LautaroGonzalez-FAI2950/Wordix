@@ -253,7 +253,7 @@ do {
             break;
 
         case 2: 
-            $numeroPalabra = rand(0, count($laColeccionPalabras));
+            $numeroPalabra = rand(0, count($laColeccionPalabras)-1);
             $completado = false;
             $nombreJugador = solicitarJugador();
             $partidasJugador = extraerResumenJugador($nombreJugador, $laColeccionPartidas)["cantidadPartidas"];
